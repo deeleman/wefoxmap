@@ -1,0 +1,34 @@
+@function level($level: 'base') {
+  @return map-get($levels, $level);
+}
+
+@function header-weight($weight: 'bold') {
+  @return map-get($header-font-weights, $weight);
+}
+
+@function weight($weight: 'base') {
+  @return map-get($font-weights, $weight);
+}
+
+@function color($color, $tone: 'base') {
+  @if map-has-key($palette, $color) {
+    $main-color-set: map-get($palette, $color);
+    @if map-has-key($main-color-set, $tone) {
+      @return map-get($main-color-set, $tone);
+    }
+  }
+  
+  @error "Invalid color name (`#{$color}`) or tone (`#{$tone}`).";
+}
+
+@function vendor-color($color: 'base') {
+  @return map-get($vendor-palette, $color);
+}
+
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em;
+}
+
+@function screen($preset: 'base') {
+  @return map-get($screens, $preset);
+}

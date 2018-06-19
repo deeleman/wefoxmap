@@ -1,0 +1,75 @@
+// Color palette
+$default-base-color: #333333;
+
+$palette: (
+  // -- Basic Color Palette
+  black: (
+    darker:       #001237,
+    dark:         #2E3852,
+    base:         #000E2B,
+    light:        #737B8C,
+    lighter:      #CFD3D8
+  ),
+
+  blue: (
+    darker:       #006EBE,
+    dark:         #0287E8,
+    base:         #57B8FF,
+    light:        #8CCFFF,
+    lighter:      #C4E5FE
+  ),
+
+  green: (
+    darker:       #2B7744,
+    dark:         #33BF62,
+    base:         #54D880,
+    light:        #7FE3A0,
+    lighter:      #DFF7E6
+  ),
+
+  red: (
+    darker:       #C8102E,
+    dark:         #DB1A3A,
+    base:         #EE1539,
+    light:        #F92448,
+    lighter:      #FF7289
+  ),
+
+  yellow: (
+    darker:       #AB921D,
+    dark:         #C7AA22,
+    base:         #FFDB2C,
+    light:        #FFE980,
+    lighter:      #FFF4C0
+  ),
+
+  grey: (
+    darker:       #9B9B9B,
+    dark:         #C5C5C5,
+    base:         #EEEDED,
+    light:        #E2E2E2,
+    lighter:      #EEEEEE
+  ),
+
+  // -- Transparency shade tones
+  translucid: (
+    darker:       rgba(0, 0, 0, 0.8),
+    dark:         rgba(0, 0, 0, 0.5),
+    base:         rgba(255, 255, 255, 0.2),
+    light:        rgba(255, 255, 255, 0.3),
+    lighter:      rgba(255, 255, 255, 0.6),
+    transparent:  rgba(255, 255, 255, 0.0)
+  )
+);
+
+// Vendor Color palette
+$vendor-palette: (
+  // -- Third party color schemes
+  base:         $default-base-color,
+
+  // Social media
+  facebook:     rgba(59, 89, 152, 1),
+  google:       rgba(220, 78, 65, 1),
+  twitter:      rgba(85, 172, 238, 1),
+  instagram:    rgba(63, 114, 155, 1)
+);

@@ -1,0 +1,95 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: em($browser-context);
+  font-family: $body-font;
+  color: color(black);
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+a,
+*:hover,
+*:active,
+*:focus,
+object,
+embed {
+   outline: none;
+}
+
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+figure {
+  margin: 0;
+  @extend %ngx-bodytext;
+}
+
+h1 {
+  @extend %ngx-header--h1;
+}
+
+h2 {
+  @extend %ngx-header--h2;
+}
+
+h3 {
+  @extend %ngx-header--h3;
+}
+
+h4 {
+  @extend %ngx-header--h4;
+}
+
+h5 {
+  @extend %ngx-header--h5;
+}
+
+h6 {
+  @extend %ngx-header--h6;
+}
+
+p {
+  @extend %ngx-bodytext;
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+p small {
+  @extend %ngx-bodytext--small;
+}
+
+li {
+  @extend %ngx-bodytext;
+}
+
+@include breakpoint($x-small-screen) {
+  h1 {
+    font-size: em(30);
+  }
+
+  h2 {
+    font-size: em(26);
+  }
+
+  p {
+    font-size: em(18);
+    line-height: em(26);
+  }
+}

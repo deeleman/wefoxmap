@@ -1,0 +1,10 @@
+// CORE MODULE - global variables, such as resets, typography, colors, etc.
+//               It also include global-scope functions and mixins.
+// WARNING: This module should never contain actual CSS classnames.
+// - Please note: Always enlist 'variables' and 'palette' at the top
+@import 'variables';
+@import 'palette';
+@import 'extends';
+@import 'functions';
+@import 'breakpoint/breakpoint';
+@import 'mixins';

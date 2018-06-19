@@ -1,0 +1,244 @@
+// General look and feel modifiers
+.ngx-is-visuallyhidden {
+  @include visuallyhidden;
+}
+
+.ngx-is-disabled {
+  opacity: .6;
+  &, * {
+    @include preventclick;
+  }
+  input {
+    color: color(grey, dark);
+    opacity: .8;
+  }
+}
+
+.ngx-is-fullscreen {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.ngx-is-centered {
+  text-align: center;
+}
+
+.ngx-is-capitalized {
+  text-transform: capitalize;
+}
+
+.ngx-is-truncated { // requires setting a given width on the selector
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ngx-is-vertically-centered-container {
+  @include vertically-centered-container;
+}
+
+// Look and feel modifier to be used to center content in the main placeholder
+.ngx-main-content {
+  @include main-content;
+}
+
+// General-purpose helpers
+.ngx-clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    display: table;
+
+    content: " ";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.ngx-viewport--legacy .ngx-not-mobile, 
+.ngx-viewport--extrasmall .ngx-not-mobile {
+  display: none;
+  visibility: hidden;
+  @include visuallyhidden;
+}
+
+.ngx-viewport--small .ngx-not-tablet {
+  @include visuallyhidden;
+}
+
+.ngx-viewport--base .ngx-not-desktop, 
+.ngx-viewport--large .ngx-not-desktop,
+.ngx-viewport--extralarge .ngx-not-desktop {
+  @include visuallyhidden;
+}
+
+// Helper classnames wrapping SASS mixins
+.ngx-is-resetlist {
+  @include resetlist;
+}
+
+.ngx-is-fullscreen {
+  @include fullscreen;
+}
+
+.ngx-is-nopadmargin {
+  @include nopadmargin;
+}
+
+.ngx-is-preventclick {
+  @include preventclick;
+}
+
+/*
+  HELPER LEVEL (z-index) CLASSNAMES ***
+  Easily assign declaratively z-index levels based on the $levels variable set
+  Eg:
+  ... class="ngx-level--overlay" ...
+  ... class="ngx-level--game" ... 
+*/
+@each $level in map-keys($levels) {
+  .ngx-level--#{$level} {
+    @include level($level);
+  }
+}
+
+/*
+  HELPER COLOR CLASSNAMES ***
+  Easily bind colors to DOM elements within components' inline HTML,
+  without having to resource to external SCSS files upon required. Use when no SASS is in use.
+  Generated classNames feature the syntax .ngx-color--{color}-{tone}, being '-{tone}' optional. 
+  Eg:
+  ... class="ngx-color--red" ...
+  ... class="ngx-bg--yellow-lighter" ...
+  ... class="ngx-border--green-dark" ...
+*/
+
+@each $color in map-keys($palette) {
+  .ngx-color--#{$color} {
+    color: color($color);
+  }
+
+  .ngx-bg--#{$color} {
+    background-color: color($color);
+  }
+
+  .ngx-border--#{$color} {
+    border-color: color($color);
+  }
+
+  @each $tone in map-keys(map-get($palette, nth($color, 1))) { 
+    .ngx-color--#{$color}-#{$tone} {
+      color: color($color, $tone);
+    }
+
+    .ngx-bg--#{$color}-#{$tone} {
+      background-color: color($color, $tone);
+    }
+    
+    .ngx-border--#{$color}-#{$tone} {
+      border-color: color($color, $tone);
+    }
+  }
+}
+
+/*
+  VENDOR HELPER COLOR CLASSNAMES ***
+  Easily bind colors to DOM elements within components' inline HTML,
+  without having to resource to external SCSS files upon required. Use when no SASS is in use.
+  Generated classNames feature the syntax .ngx-color--{color}-{tone}, being '-{tone}' optional. 
+  Eg:
+  ... class="ngx-color--vendor-google" ..."
+  ... class="ngx-border--vendor-facebook" ..."
+*/
+
+@each $color in map-keys($vendor-palette) {
+  .ngx-color--vendor-#{$color} {
+    color: vendor-color($color);
+  }
+
+  .ngx-bg--vendor-#{$color} {
+    background-color: vendor-color($color);
+  }
+
+  .ngx-border--vendor-#{$color} {
+    border-color: vendor-color($color);
+  }
+}
+
+/*
+  TYPOGRAPHY HELPER CLASSNAMES ***
+  Classname wrappers over generic typography rulesets
+*/
+
+.ngx-body {
+  @extend %ngx-body;
+
+  &text {
+    @extend %ngx-bodytext;
+  }
+  
+  &text--small {
+    @extend %ngx-bodytext--small;
+  }
+}
+
+/*
+  ANIMATION HELPER CLASSNAMES ***
+  Classname wrappers over generic animation rulesets
+*/
+.ngx-animation {
+  &--slide-in {
+    animation: slideIn 0.5s 1 forwards;
+  }
+
+  &--slide-in-back {
+    animation: slideInBack 0.5s 1 forwards;
+  }
+
+  &--slide-in-down {
+    animation: slideInDown 0.5s 1 forwards;
+  }
+
+  &--slide-out-right {
+    animation: slideOutRight 1.2s 1 forwards;
+  }
+
+  &--rotate {
+    animation: rotate .5s;
+  }
+
+  &--spinner {
+    animation: rotate 0.4s infinite linear;
+  }
+
+  &--zoomin {
+    animation: zoomIn .4s;
+  }
+
+  &--zoom-out {
+    animation: zoomOut .4s;
+  }
+
+  &--fadein {
+    animation: fadeIn .6s;
+  }
+
+  &--fadeOut {
+    animation: fadeOut .6s;
+  }
+
+  &--flip-in-y {
+    animation: flipInY 1.2s linear;
+    backface-visibility: visible !important;
+  }
+
+  &--ripple {
+    animation: ripple .8s ease-out;
+  }
+
+  &--bounce-in {
+    animation: bounceIn 1s 0s;
+  }
+}

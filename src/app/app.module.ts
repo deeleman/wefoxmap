@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER, Injector } from '@angular/core';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+
+import { CoreModule } from '@ngx-starter/core';
+import { VendorModule } from '@ngx-starter/vendor';
+import { SharedModule } from '@ngx-starter/shared';
 
 import { AppComponent } from './app.component';
 
@@ -8,9 +13,24 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CoreModule.forRoot(),
+    VendorModule.forRoot(),
+    SharedModule,
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    { provide: APP_INITIALIZER, multi: true, useFactory: onAppInit, deps: [Injector] }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function onAppInit(injector: Injector) {
+  return () => {
+    // Place any function or provider that requires early initialization here,
+    // taking advantage of the injector to fetch it from the DI mechanism. Eg:
+    // const myService: MyService = injector.get(MyService);
+    // myService.bootstrap();
+  };
+}

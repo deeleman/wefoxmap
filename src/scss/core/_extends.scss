@@ -1,0 +1,72 @@
+// TYPOGRAPHY SASS CLASS EXTENDS
+%ngx-header {
+  font-family: $header-font;
+  margin: 0;
+}
+
+%ngx-sub-header {
+  font-family: $body-font;
+  margin: 0;
+}
+
+%ngx-body {
+  font-family: $body-font;
+  margin: 0;
+}
+
+%ngx-header--h1 {
+  @extend %ngx-header;
+  font-size: 40px;
+  font-weight: header-weight(bold);
+}
+
+%ngx-header--h2 {
+  @extend %ngx-header;
+  font-size: 30px;
+  font-weight: header-weight(semibold);
+  padding: 0 0 em(20, 30);
+}
+
+%ngx-header--h3 {
+  @extend %ngx-sub-header;
+  font-size: 24px;
+  font-weight: weight(bold);
+  padding: em(20, 24) 0;
+}
+
+%ngx-header--h4 {
+  @extend %ngx-sub-header;
+  font-size: 18px;
+  font-weight: weight(bolder);
+}
+
+%ngx-header--h5 {
+  @extend %ngx-sub-header;
+  font-size: 18px;
+  font-weight: weight(bold);
+}
+
+%ngx-header--h6 {
+  @extend %ngx-sub-header;
+  font-size: 10px;
+  font-weight: weight(regular);
+  text-transform: uppercase;
+}
+
+%ngx-bodytext {
+  @extend %ngx-body;
+  font-size: 15px;
+  line-height: em(24, 20);
+  vertical-align: middle;
+  font-weight: weight(regular);
+  padding: 0 0 em(20, 20);
+  a {
+    color: color(blue);
+  }
+}
+
+%ngx-bodytext small,
+%ngx-bodytext--small  {
+  font-size: 11px;
+  line-height: 14px;
+}

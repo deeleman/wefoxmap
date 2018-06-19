@@ -1,0 +1,333 @@
+//@Experimental Responsive design mixins
+@mixin breakpoint_v2($widths) {
+  $mediaquery: (min-width: nth($widths, 1));
+
+  @if length($widths) > 1 {
+    $mediaquery: (min-width: nth($widths, 1)) and (max-width: nth($widths, 2));
+  }
+
+  @media #{$mediaquery} {
+    @content;
+  }
+}
+
+// Possible sizes: Refer to _variables.scss global breakpoints variables
+@mixin breakpoints($sizes...) {
+  @each $size in $sizes {
+    @include breakpoint($size) {
+      @content;
+    }
+  }
+}
+
+// Possible sizes: extralarge, large, base, small, extrasmall, legacy
+@mixin viewport($sizes...) {
+  @each $size in $sizes {
+    & {
+      @include breakpoint(screen($size)) {
+        @content;
+      }
+    }
+  }
+}
+
+// Grid gallery generator mixins
+@mixin grid($columns: 2, $gutterPercentage: 1.8%) {
+  @if $columns > 1 {
+    @include _generate-grid($columns, $gutterPercentage);
+  } @else {
+    @include _generate-column-grid($gutter);
+  }
+}
+
+@mixin _generate-grid($columns, $gutterPercentage) {
+  // @TODO Replace current implementation by flexbox-driven one once Firefox
+  //       provides support for percentage-based bottom margins
+  display: block;
+  overflow: auto;
+
+  > * {
+    display: block;
+    float: left;
+
+    overflow: visible;
+    line-height: 0;
+    width: ((100% - (($columns - 1) * $gutterPercentage)) / $columns);
+  }
+
+  > *:nth-child(n) {
+    margin-right: $gutterPercentage;
+    margin-bottom: $gutterPercentage;
+  }
+
+  > *:nth-child(#{$columns}n) {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+@mixin _generate-column-grid($gutter) {
+  display: block;
+
+  > * {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: $gutter!important;
+  }
+}
+
+// Removes the element without affecting its display properties
+@mixin visuallyhidden {
+  position: absolute;
+
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+}
+
+// Removes default styles for buttons
+@mixin resetbutton {
+  background: color(translucid, transparent);
+  border: none;
+  cursor: pointer;
+}
+
+// Disables clicking
+@mixin preventclick {
+  cursor: default;
+  pointer-events: none;
+}
+
+// Removes margins and paddings in elements
+@mixin nopadmargin {
+  margin: 0;
+  padding: 0;
+}
+
+// Removes margins, paddings and list item bullets
+@mixin resetlist {
+  @include nopadmargin;
+  > li {
+    list-style-type: none;
+
+    @include nopadmargin;
+  }
+}
+
+// Makes a DOM element spread across the entire viewport
+@mixin fullscreen {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+
+  transform: translate(0, 0);
+}
+
+// Centers blocks of body content in the main placeholder
+@mixin main-content {
+  max-width: $max-width;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include viewport(extralarge) {
+    width: 100%;
+  }
+
+  @include viewport(large, base, small, extrasmall) {
+    margin-right: #{$browser-context}px;
+    margin-left: #{$browser-context}px;
+  }
+}
+
+// Truncates text with ellipsis at the given width (lorem ipsum -> lorem ip...)
+@mixin truncateAt($width) {
+  width: $width;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// Crops appending an ellipsis on large blocks of text
+@mixin crop-multiline($font-size, $line-height, $lines-to-show) {
+  display: block;
+  display: -webkit-box;
+  overflow: hidden;
+  height: $font-size*$line-height*$lines-to-show;
+  text-overflow: ellipsis;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  -webkit-line-clamp: $lines-to-show;
+  -webkit-box-orient: vertical;
+}
+
+// Z-index helper mixin (see also associated helper)
+@mixin level($level) {
+  z-index: level($level);
+}
+
+// Crossbrowser box shadow
+@mixin box-shadow($payload) {
+  box-shadow: $payload;
+}
+
+// Allows placeholder style customisation in form inputs
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content;
+  }
+
+  :-moz-placeholder {
+     @content;
+  }
+
+  ::-moz-placeholder {
+     @content;
+  }
+
+  :-ms-input-placeholder {
+     @content;
+  }
+}
+
+@mixin placeholderfocus {
+  :focus::-webkit-input-placeholder {
+    @content;
+  }
+
+  :focus:-moz-placeholder {
+     @content;
+  }
+
+  :focus::-moz-placeholder {
+     @content;
+  }
+
+  :focus:-ms-input-placeholder {
+     @content;
+  }
+}
+
+// To be applied to any cotnainer whose (unique) child element needs to float vertically centered
+@mixin vertically-centered-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+// Radial coloured background gradient generator
+@mixin gradient($dark-color, $light-color, $verticalOffset:top, $horizontalOffset:center) {
+  background: $light-color;
+  background: -moz-radial-gradient(top, ellipse cover, $light-color 0%, $light-color 31%, $dark-color 100%);
+  background: -webkit-gradient(radial, $verticalOffset $horizontalOffset, 0px, $horizontalOffset $horizontalOffset, 100%, color-stop(0%, $light-color), color-stop(31%, $light-color), color-stop(100%, $dark-color));
+  background: -webkit-radial-gradient($verticalOffset $horizontalOffset, ellipse cover, $light-color 0%, $light-color 31%, $dark-color 100%);
+  background: -o-radial-gradient($verticalOffset $horizontalOffset, ellipse cover, $light-color 0%, $light-color 31%, $dark-color 100%);
+  background: -ms-radial-gradient($verticalOffset $horizontalOffset, ellipse cover, $light-color 0%, $light-color 31%, $dark-color 100%);
+  background: radial-gradient(ellipse at $verticalOffset $horizontalOffset, $light-color 0%, $light-color 31%, $dark-color 100%);
+}
+
+// Vendor prefixed keyframes - TODO Refactor this to avoid duplication in content requiring vendor prefixes as well
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+      @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+      @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+      @content;
+  }
+  @-o-keyframes #{$animation-name} {
+      @content;
+  }
+  @keyframes #{$animation-name} {
+      @content;
+  }
+}
+
+// A mixin to turn a container into a perfect header/body/footer wrapper
+@mixin body-footer-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: stretch;
+  height: 100%;
+}
+
+// Styles a DOM element to feature a centered background image covering it up
+@mixin full-image-background($imagepath) {
+  background-image: url($imagepath);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+// A direct and convenient way to style <button> elements
+@mixin color-button($normal, $hover, $active, $focus, $text: #FFFFFF) {
+  background: $normal;
+  border-color: $normal;
+  color: $text;
+
+  @media (pointer: fine) {
+    &:not(&--is-disabled):hover {
+      background: $hover;
+      border-color: $hover;
+      color: $text;
+    }
+  }
+
+  &:not(&--is-disabled):active {
+    background: $active;
+    border-color: $active;
+    color: $text;
+  }
+
+  &:not(&--is-disabled):focus {
+    color: $focus;
+    border-color: $focus;
+    color: $text;
+  }
+}
+
+// Trigger 3D hardware acceleration in order to improve UI peformance
+@mixin enable-3D-acceleration {
+  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
+}
+
+// Prevents flickering (on FF mostly) on lazy loaded items featuring CSS animations
+@mixin prevent-animation-flicker {
+  backface-visibility: hidden;
+  perspective: 200px;
+}
+
+// Ensures text styling is properly enforced down the nodes childtree
+@mixin text-inherit {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// Generates a rounded avatar icon with a given size, background color and image
+@mixin avatar-icon($size, $iconUrl, $color: $default-base-color, $tone: base, $padding: 5px) {
+  width: $size - $padding;
+  height: $size - $padding;
+  border-radius: 100%;
+  background-color: color($color, $tone);
+  background-image: url($iconUrl);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: center;
+  border-color: color($color, $tone);
+  border-width: $padding;
+  border-style: solid;
+}
