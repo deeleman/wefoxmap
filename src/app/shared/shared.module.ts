@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { APP_DIRECTIVES } from './directives';
-import { APP_PIPES } from './pipes';
+import { SHARED_COMPONENTS } from './components';
+import { SHARED_DIRECTIVES } from './directives';
+import { SHARED_PIPES } from './pipes';
 
 const sharedModules = [
   CommonModule,
@@ -14,8 +15,9 @@ const sharedModules = [
 
 @NgModule({
   declarations: [
-    APP_DIRECTIVES,
-    APP_PIPES
+    SHARED_DIRECTIVES,
+    SHARED_PIPES,
+    SHARED_COMPONENTS
   ],
   imports: sharedModules,
   exports: sharedModules,

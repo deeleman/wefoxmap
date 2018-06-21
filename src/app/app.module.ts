@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER, Injector } from '@angular/core';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
-import { CoreModule } from '@ngx-starter/core';
-import { VendorModule } from '@ngx-starter/vendor';
-import { SharedModule } from '@ngx-starter/shared';
+import { CoreModule } from '@wefox/core';
+import { VendorModule } from '@wefox/vendor';
+import { SharedModule } from '@wefox/shared';
 
 import { AppComponent } from './app.component';
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { WindowRef } from '@ngx-starter/platform';
+import { WindowRef } from '@wefox/platform';
 
 @Injectable()
 export class GoogleTagManagerService {

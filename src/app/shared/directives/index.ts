@@ -1,9 +1,5 @@
-import { EnterViewportDirective } from './enter-viewport.directive';
-import { ScrollUpOnTapDirective } from './scrollup-on-tap.directive';
-import { ScrollWatchDirective } from './scroll-watch.directive';
+// import { WefoxExampleDirective } from './wefox-example.directive';
 
-export const APP_DIRECTIVES = [
-  EnterViewportDirective,
-  ScrollWatchDirective,
-  ScrollUpOnTapDirective
+export const SHARED_DIRECTIVES = [
+  // WefoxExampleDirective
 ];

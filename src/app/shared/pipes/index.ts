@@ -1,5 +1,5 @@
-import { SlugPipe } from './slug.pipe';
+// import { WefoxExamplePipe } from './wefox-example.pipe';
 
-export const APP_PIPES = [
-  SlugPipe
+export const SHARED_PIPES = [
+  //WefoxExamplePipe
 ];

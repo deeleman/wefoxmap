@@ -13,7 +13,7 @@ $levels: (
 // FONT VARIABLES
 $header-font: 'Open Sans', sans-serif;
 $body-font:   'Montserrat', sans-serif;
-$icon-font:   'ngx-starter';
+$icon-font:   'wfx-starter';
 
 $header-font-weights: (
   light:          300,
@@ -34,33 +34,3 @@ $browser-context: 16;
 $gutter:                  20px;
 $max-width:             1170px;
 $grid-cell-size-small:   168px;
-
-// GLOBAL BREAKPOINTS
-$smaller-screens:       0px  768px; // Combines 'small' plus 'x-small' resolutions mostly for mobile overlays
-
-$x-legacy-screen:       0px  360px;
-$x-small-screen:        0px  480px;
-$small-screen:        481px  768px;
-$base-screen:         769px  960px;
-$large-screen:        961px $max-width;
-$x-large-screen:            $max-width + 1;
-
-$largest-screens:            961px;
-
-$all-screens:                  0px;
-
-$screens: (
-  legacy: $x-legacy-screen,
-  extrasmall: $x-small-screen,
-  small: $small-screen,
-  base: $base-screen,
-  large: $large-screen,
-  extralarge: $x-large-screen,
-  larger: $largest-screens,
-  smaller: $smaller-screens,
-  all: $all-screens
-);
-
-// DEVICE BREAKPOINTS
-$tablet-portrait:              768px;
-$tablet-landscape:            1024px;

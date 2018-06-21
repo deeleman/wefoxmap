@@ -37,59 +37,44 @@ a:visited {
 
 figure {
   margin: 0;
-  @extend %ngx-bodytext;
+  @extend %wfx-bodytext;
 }
 
 h1 {
-  @extend %ngx-header--h1;
+  @extend %wfx-header--h1;
 }
 
 h2 {
-  @extend %ngx-header--h2;
+  @extend %wfx-header--h2;
 }
 
 h3 {
-  @extend %ngx-header--h3;
+  @extend %wfx-header--h3;
 }
 
 h4 {
-  @extend %ngx-header--h4;
+  @extend %wfx-header--h4;
 }
 
 h5 {
-  @extend %ngx-header--h5;
+  @extend %wfx-header--h5;
 }
 
 h6 {
-  @extend %ngx-header--h6;
+  @extend %wfx-header--h6;
 }
 
 p {
-  @extend %ngx-bodytext;
+  @extend %wfx-bodytext;
   a:hover {
     text-decoration: underline;
   }
 }
 
 p small {
-  @extend %ngx-bodytext--small;
+  @extend %wfx-bodytext--small;
 }
 
 li {
-  @extend %ngx-bodytext;
-}
-
-@include breakpoint($x-small-screen) {
-  h1 {
-    font-size: em(30);
-  }
-
-  h2 {
-    font-size: em(26);
-  }
-
-  p {
-    font-size: em(18);
-    line-height: em(26);
-  }
+  @extend %wfx-bodytext;
 }

@@ -2,8 +2,7 @@ import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { WindowRef } from '@ngx-starter/platform';
-import { WebSocketService } from './websockets';
+import { WindowRef, browserFactory } from '@wefox/platform';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
@@ -19,15 +18,8 @@ export class CoreModule {
     return [{
       ngModule: CoreModule,
       providers: [
-        { provide: WindowRef, useFactory: windowFactory },
-        WebSocketService,
+        { provide: WindowRef, useFactory: browserFactory },
       ]
     }];
   }
-}
-
-export function windowFactory() {
-  return {
-    getNativeWindow: () => window
-  };
 }

@@ -1,9 +1,9 @@
 // General look and feel modifiers
-.ngx-is-visuallyhidden {
+.wfx-is-visuallyhidden {
   @include visuallyhidden;
 }
 
-.ngx-is-disabled {
+.wfx-is-disabled {
   opacity: .6;
   &, * {
     @include preventclick;
@@ -14,38 +14,38 @@
   }
 }
 
-.ngx-is-fullscreen {
+.wfx-is-fullscreen {
   position: absolute;
   top: 0;
   width: 100vw;
   height: 100vh;
 }
 
-.ngx-is-centered {
+.wfx-is-centered {
   text-align: center;
 }
 
-.ngx-is-capitalized {
+.wfx-is-capitalized {
   text-transform: capitalize;
 }
 
-.ngx-is-truncated { // requires setting a given width on the selector
+.wfx-is-truncated { // requires setting a given width on the selector
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
-.ngx-is-vertically-centered-container {
+.wfx-is-vertically-centered-container {
   @include vertically-centered-container;
 }
 
 // Look and feel modifier to be used to center content in the main placeholder
-.ngx-main-content {
+.wfx-main-content {
   @include main-content;
 }
 
 // General-purpose helpers
-.ngx-clearfix {
+.wfx-clearfix {
   *zoom: 1;
   &:before, &:after {
     display: table;
@@ -57,37 +57,37 @@
   }
 }
 
-.ngx-viewport--legacy .ngx-not-mobile, 
-.ngx-viewport--extrasmall .ngx-not-mobile {
+.wfx-viewport--legacy .wfx-not-mobile, 
+.wfx-viewport--extrasmall .wfx-not-mobile {
   display: none;
   visibility: hidden;
   @include visuallyhidden;
 }
 
-.ngx-viewport--small .ngx-not-tablet {
+.wfx-viewport--small .wfx-not-tablet {
   @include visuallyhidden;
 }
 
-.ngx-viewport--base .ngx-not-desktop, 
-.ngx-viewport--large .ngx-not-desktop,
-.ngx-viewport--extralarge .ngx-not-desktop {
+.wfx-viewport--base .wfx-not-desktop, 
+.wfx-viewport--large .wfx-not-desktop,
+.wfx-viewport--extralarge .wfx-not-desktop {
   @include visuallyhidden;
 }
 
 // Helper classnames wrapping SASS mixins
-.ngx-is-resetlist {
+.wfx-is-resetlist {
   @include resetlist;
 }
 
-.ngx-is-fullscreen {
+.wfx-is-fullscreen {
   @include fullscreen;
 }
 
-.ngx-is-nopadmargin {
+.wfx-is-nopadmargin {
   @include nopadmargin;
 }
 
-.ngx-is-preventclick {
+.wfx-is-preventclick {
   @include preventclick;
 }
 
@@ -95,11 +95,11 @@
   HELPER LEVEL (z-index) CLASSNAMES ***
   Easily assign declaratively z-index levels based on the $levels variable set
   Eg:
-  ... class="ngx-level--overlay" ...
-  ... class="ngx-level--game" ... 
+  ... class="wfx-level--overlay" ...
+  ... class="wfx-level--game" ... 
 */
 @each $level in map-keys($levels) {
-  .ngx-level--#{$level} {
+  .wfx-level--#{$level} {
     @include level($level);
   }
 }
@@ -108,62 +108,38 @@
   HELPER COLOR CLASSNAMES ***
   Easily bind colors to DOM elements within components' inline HTML,
   without having to resource to external SCSS files upon required. Use when no SASS is in use.
-  Generated classNames feature the syntax .ngx-color--{color}-{tone}, being '-{tone}' optional. 
+  Generated classNames feature the syntax .wfx-color--{color}-{tone}, being '-{tone}' optional. 
   Eg:
-  ... class="ngx-color--red" ...
-  ... class="ngx-bg--yellow-lighter" ...
-  ... class="ngx-border--green-dark" ...
+  ... class="wfx-color--red" ...
+  ... class="wfx-bg--yellow-lighter" ...
+  ... class="wfx-border--green-dark" ...
 */
 
 @each $color in map-keys($palette) {
-  .ngx-color--#{$color} {
+  .wfx-color--#{$color} {
     color: color($color);
   }
 
-  .ngx-bg--#{$color} {
+  .wfx-bg--#{$color} {
     background-color: color($color);
   }
 
-  .ngx-border--#{$color} {
+  .wfx-border--#{$color} {
     border-color: color($color);
   }
 
   @each $tone in map-keys(map-get($palette, nth($color, 1))) { 
-    .ngx-color--#{$color}-#{$tone} {
+    .wfx-color--#{$color}-#{$tone} {
       color: color($color, $tone);
     }
 
-    .ngx-bg--#{$color}-#{$tone} {
+    .wfx-bg--#{$color}-#{$tone} {
       background-color: color($color, $tone);
     }
     
-    .ngx-border--#{$color}-#{$tone} {
+    .wfx-border--#{$color}-#{$tone} {
       border-color: color($color, $tone);
     }
-  }
-}
-
-/*
-  VENDOR HELPER COLOR CLASSNAMES ***
-  Easily bind colors to DOM elements within components' inline HTML,
-  without having to resource to external SCSS files upon required. Use when no SASS is in use.
-  Generated classNames feature the syntax .ngx-color--{color}-{tone}, being '-{tone}' optional. 
-  Eg:
-  ... class="ngx-color--vendor-google" ..."
-  ... class="ngx-border--vendor-facebook" ..."
-*/
-
-@each $color in map-keys($vendor-palette) {
-  .ngx-color--vendor-#{$color} {
-    color: vendor-color($color);
-  }
-
-  .ngx-bg--vendor-#{$color} {
-    background-color: vendor-color($color);
-  }
-
-  .ngx-border--vendor-#{$color} {
-    border-color: vendor-color($color);
   }
 }
 
@@ -172,15 +148,15 @@
   Classname wrappers over generic typography rulesets
 */
 
-.ngx-body {
-  @extend %ngx-body;
+.wfx-body {
+  @extend %wfx-body;
 
   &text {
-    @extend %ngx-bodytext;
+    @extend %wfx-bodytext;
   }
   
   &text--small {
-    @extend %ngx-bodytext--small;
+    @extend %wfx-bodytext--small;
   }
 }
 
@@ -188,7 +164,7 @@
   ANIMATION HELPER CLASSNAMES ***
   Classname wrappers over generic animation rulesets
 */
-.ngx-animation {
+.wfx-animation {
   &--slide-in {
     animation: slideIn 0.5s 1 forwards;
   }

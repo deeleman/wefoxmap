@@ -1,60 +1,60 @@
 // TYPOGRAPHY SASS CLASS EXTENDS
-%ngx-header {
+%wfx-header {
   font-family: $header-font;
   margin: 0;
 }
 
-%ngx-sub-header {
+%wfx-sub-header {
   font-family: $body-font;
   margin: 0;
 }
 
-%ngx-body {
+%wfx-body {
   font-family: $body-font;
   margin: 0;
 }
 
-%ngx-header--h1 {
-  @extend %ngx-header;
+%wfx-header--h1 {
+  @extend %wfx-header;
   font-size: 40px;
   font-weight: header-weight(bold);
 }
 
-%ngx-header--h2 {
-  @extend %ngx-header;
+%wfx-header--h2 {
+  @extend %wfx-header;
   font-size: 30px;
   font-weight: header-weight(semibold);
   padding: 0 0 em(20, 30);
 }
 
-%ngx-header--h3 {
-  @extend %ngx-sub-header;
+%wfx-header--h3 {
+  @extend %wfx-sub-header;
   font-size: 24px;
   font-weight: weight(bold);
   padding: em(20, 24) 0;
 }
 
-%ngx-header--h4 {
-  @extend %ngx-sub-header;
+%wfx-header--h4 {
+  @extend %wfx-sub-header;
   font-size: 18px;
   font-weight: weight(bolder);
 }
 
-%ngx-header--h5 {
-  @extend %ngx-sub-header;
+%wfx-header--h5 {
+  @extend %wfx-sub-header;
   font-size: 18px;
   font-weight: weight(bold);
 }
 
-%ngx-header--h6 {
-  @extend %ngx-sub-header;
+%wfx-header--h6 {
+  @extend %wfx-sub-header;
   font-size: 10px;
   font-weight: weight(regular);
   text-transform: uppercase;
 }
 
-%ngx-bodytext {
-  @extend %ngx-body;
+%wfx-bodytext {
+  @extend %wfx-body;
   font-size: 15px;
   line-height: em(24, 20);
   vertical-align: middle;
@@ -65,8 +65,8 @@
   }
 }
 
-%ngx-bodytext small,
-%ngx-bodytext--small  {
+%wfx-bodytext small,
+%wfx-bodytext--small  {
   font-size: 11px;
   line-height: 14px;
 }

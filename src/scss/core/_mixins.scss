@@ -1,36 +1,3 @@
-//@Experimental Responsive design mixins
-@mixin breakpoint_v2($widths) {
-  $mediaquery: (min-width: nth($widths, 1));
-
-  @if length($widths) > 1 {
-    $mediaquery: (min-width: nth($widths, 1)) and (max-width: nth($widths, 2));
-  }
-
-  @media #{$mediaquery} {
-    @content;
-  }
-}
-
-// Possible sizes: Refer to _variables.scss global breakpoints variables
-@mixin breakpoints($sizes...) {
-  @each $size in $sizes {
-    @include breakpoint($size) {
-      @content;
-    }
-  }
-}
-
-// Possible sizes: extralarge, large, base, small, extrasmall, legacy
-@mixin viewport($sizes...) {
-  @each $size in $sizes {
-    & {
-      @include breakpoint(screen($size)) {
-        @content;
-      }
-    }
-  }
-}
-
 // Grid gallery generator mixins
 @mixin grid($columns: 2, $gutterPercentage: 1.8%) {
   @if $columns > 1 {
@@ -135,15 +102,6 @@
   max-width: $max-width;
   margin-right: auto;
   margin-left: auto;
-
-  @include viewport(extralarge) {
-    width: 100%;
-  }
-
-  @include viewport(large, base, small, extrasmall) {
-    margin-right: #{$browser-context}px;
-    margin-left: #{$browser-context}px;
-  }
 }
 
 // Truncates text with ellipsis at the given width (lorem ipsum -> lorem ip...)
@@ -235,7 +193,7 @@
   background: radial-gradient(ellipse at $verticalOffset $horizontalOffset, $light-color 0%, $light-color 31%, $dark-color 100%);
 }
 
-// Vendor prefixed keyframes - TODO Refactor this to avoid duplication in content requiring vendor prefixes as well
+// Vendor prefixed keyframes
 @mixin keyframes($animation-name) {
   @-webkit-keyframes #{$animation-name} {
       @content;
@@ -264,7 +222,7 @@
 }
 
 // Styles a DOM element to feature a centered background image covering it up
-@mixin full-image-background($imagepath) {
+@mixin full-container-background($imagepath) {
   background-image: url($imagepath);
   background-repeat: no-repeat;
   background-position: center center;

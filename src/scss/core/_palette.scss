@@ -61,15 +61,3 @@ $palette: (
     transparent:  rgba(255, 255, 255, 0.0)
   )
 );
-
-// Vendor Color palette
-$vendor-palette: (
-  // -- Third party color schemes
-  base:         $default-base-color,
-
-  // Social media
-  facebook:     rgba(59, 89, 152, 1),
-  google:       rgba(220, 78, 65, 1),
-  twitter:      rgba(85, 172, 238, 1),
-  instagram:    rgba(63, 114, 155, 1)
-);
