@@ -1,5 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
-import { appSettings } from './app.settings';
+
+import { SETTINGS } from '@wefox/settings';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -18,12 +19,12 @@ describe('AppComponent', () => {
   it(`should have as title the text configured at the settings`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual(appSettings.appName);
+    expect(app.title).toEqual(SETTINGS.appName);
   }));
   it('should render title in a h1 tag', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain(`Welcome to ${appSettings.appName}!`);
+    expect(compiled.querySelector('h1').textContent).toContain(`Welcome to ${SETTINGS.appName}!`);
   }));
 });

@@ -2,7 +2,8 @@ import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { WindowRef, browserFactory } from '@wefox/platform';
+import { WindowRef, browserFactory, PostService } from '@wefox/platform';
+import { PostProviderService } from './providers';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
@@ -18,7 +19,9 @@ export class CoreModule {
     return [{
       ngModule: CoreModule,
       providers: [
+        PostProviderService,
         { provide: WindowRef, useFactory: browserFactory },
+        { provide: PostService, useClass: PostProviderService },
       ]
     }];
   }
