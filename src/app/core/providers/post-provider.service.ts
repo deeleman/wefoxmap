@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, map } from 'rxjs/operators';
 
 import { SETTINGS } from '@wefox/settings';
 import { PostService, Posts, Post } from '@wefox/platform';
@@ -14,7 +14,9 @@ export class PostProviderService extends PostService {
 
   list(): Observable<Posts> {
     const url = this.getRestEndpoint();
-    return this.httpClient.get<Posts>(url);
+    return this.httpClient.get<Posts>(url).pipe(
+      map(posts => posts.map(post => ({ ...post, lat: +post.lat, long: +post.long })))
+    );
   }
 
   show(post: Partial<Post>): Observable<Post> {

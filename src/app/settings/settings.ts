@@ -1,11 +1,11 @@
-import { environment } from './../../environments/environment';
+import { environment } from '@wefox/../environments/environment';
 
 export const SETTINGS = {
-  // ENV settings
+  // INHERITED ENVIRONMENT SETTINGS
   ...environment,
 
   // APP GLOBAL SETTINGS
-  appName: 'Wefox Map',
+  appName: 'Wefox Office Locator',
 
   // API CONFIG
   api: {
@@ -14,5 +14,10 @@ export const SETTINGS = {
   },
 
   // REDUX CONFIG
-  maxStoreLoggingEntries: 50
+  maxStoreLoggingEntries: 50,
+
+  // GOOGLE KEYS
+  google: {
+    mapKey: 'AIzaSyDpmJn73wSpasCRbW2ojDqzBtbyCwM_iCI'
+  }
 };

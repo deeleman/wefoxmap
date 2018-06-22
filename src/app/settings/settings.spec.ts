@@ -25,4 +25,13 @@ describe('App settings', () => {
     expect(SETTINGS.maxStoreLoggingEntries).toBeDefined();
     expect(SETTINGS.maxStoreLoggingEntries).toBeGreaterThanOrEqual(0);
   });
+
+  it('should contain a google settings element', () => {
+    expect(SETTINGS.google).toBeDefined();
+  });
+
+  it('should have a proper GMaps key configured', () => {
+    expect(SETTINGS.google.mapKey).toBeDefined();
+  });
+
 });

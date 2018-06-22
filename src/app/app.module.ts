@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER, Injector } from '@angular/core';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
 
+import { SETTINGS } from '@wefox/settings';
 import { CoreModule } from '@wefox/core';
 import { VendorModule } from '@wefox/vendor';
 import { PlatformModule } from '@wefox/platform';
@@ -19,6 +21,7 @@ import { AppComponent } from './app.component';
     VendorModule.forRoot(),
     PlatformModule.forRoot(),
     SharedModule,
+    AgmCoreModule.forRoot({ apiKey: SETTINGS.google.mapKey }),
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
