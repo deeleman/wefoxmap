@@ -13,5 +13,5 @@ export abstract class PostService {
 
   abstract update(post: Partial<Post>): Observable<any>;
 
-  abstract remove(post: Partial<Post>): Observable<any>;
+  abstract remove(post: Partial<Post>): Observable<Partial<Post>>;
 }

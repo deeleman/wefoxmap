@@ -11,5 +11,8 @@ export const SETTINGS = {
   api: {
     host: 'https://wf-challenge-artuan.herokuapp.com',
     postsEndpoint: '/posts'
-  }
+  },
+
+  // REDUX CONFIG
+  maxStoreLoggingEntries: 50
 };

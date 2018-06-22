@@ -5,11 +5,11 @@ export interface Post {
   created_at: string;
   updated_at: string;
   lat: number;
-  log: number;
+  long: number;
   image_url: string;
 }
 
-export type Posts = Array<Post>;
+export declare type Posts = Array<Post>;
 
 export interface PostState {
   posts: Posts;

@@ -20,4 +20,9 @@ describe('App settings', () => {
   it('should inform of the api Posts endpoint', () => {
     expect(SETTINGS.api.postsEndpoint).toBeDefined();
   });
+
+  it('should define the maximum amunt of redux actions logged by Dev Tools', () => {
+    expect(SETTINGS.maxStoreLoggingEntries).toBeDefined();
+    expect(SETTINGS.maxStoreLoggingEntries).toBeGreaterThanOrEqual(0);
+  });
 });

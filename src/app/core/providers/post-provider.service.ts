@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
 import { SETTINGS } from '@wefox/settings';
 import { PostService, Posts, Post } from '@wefox/platform';
@@ -13,8 +14,6 @@ export class PostProviderService extends PostService {
 
   list(): Observable<Posts> {
     const url = this.getRestEndpoint();
-    console.log(url);
-    
     return this.httpClient.get<Posts>(url);
   }
 
@@ -34,9 +33,11 @@ export class PostProviderService extends PostService {
 
   }
 
-  remove(post: Partial<Post>): Observable<any> {
+  remove(post: Partial<Post>): Observable<Partial<Post>> {
     const url = this.getRestEndpoint(post);
-    return this.httpClient.delete<Post>(url);
+    return this.httpClient.delete<Post>(url).pipe(
+      mergeMap(response => of(post))
+    );
   }
 
   private getRestEndpoint(post?: Partial<Post>): string {

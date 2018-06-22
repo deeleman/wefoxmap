@@ -4,6 +4,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { CoreModule } from '@wefox/core';
 import { VendorModule } from '@wefox/vendor';
+import { PlatformModule } from '@wefox/platform';
 import { SharedModule } from '@wefox/shared';
 
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     CoreModule.forRoot(),
     VendorModule.forRoot(),
+    PlatformModule.forRoot(),
     SharedModule,
   ],
   providers: [
@@ -28,9 +30,6 @@ export class AppModule { }
 
 export function onAppInit(injector: Injector) {
   return () => {
-    // Place any function or provider that requires early initialization here,
-    // taking advantage of the injector to fetch it from the DI mechanism. Eg:
-    // const myService: MyService = injector.get(MyService);
-    // myService.bootstrap();
+    // early initialization actions
   };
 }

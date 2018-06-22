@@ -175,6 +175,18 @@
   dependencies:
     tslib "^1.9.0"
 
+"@ngrx/effects@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-6.0.1.tgz#b4c0a7918b8c9a4dbc2a663ea7562bea5db21257"
+
+"@ngrx/store-devtools@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-6.0.1.tgz#6049208d1ef8dc5f1f96ffc63373eab2d72f957c"
+
+"@ngrx/store@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-6.0.1.tgz#02c806ce20c698b997e81f5671e0edc07d32cf86"
+
 "@ngtools/webpack@6.0.8":
   version "6.0.8"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-6.0.8.tgz#a05bce526aee9da62bb230a95fba83fee99d0bca"
@@ -3331,6 +3343,12 @@ jasmine-core@~2.8.0:
 jasmine-core@~2.99.1:
   version "2.99.1"
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-2.99.1.tgz#e6400df1e6b56e130b61c4bcd093daa7f6e8ca15"
+
+jasmine-marbles@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/jasmine-marbles/-/jasmine-marbles-0.3.1.tgz#ef65edecb41b8dd62fc6bda40448222042e32043"
+  dependencies:
+    lodash "^4.5.0"
 
 jasmine-spec-reporter@~4.2.1:
   version "4.2.1"
