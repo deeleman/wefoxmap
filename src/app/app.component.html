@@ -1,10 +1,13 @@
-<article class="wfx-main-content">
-  <section class="wfx-is-centered">
-    <h1>
-      Welcome to {{ title }}!
-    </h1>
-  </section>
-  <section>
-    <pre>{{ postState | async | json }}</pre>
+<article class="app">
+  <aside class="app__browser">
+    <figure class="app__browser-logo">
+      <img src="./../assets/images/wefox-logo.png" alt="Wefox">
+    </figure>
+    <div class="app__browser-posts">
+      <router-outlet></router-outlet>
+    </div>
+  </aside>
+  <section class="app__main">
+    
   </section>
 </article>

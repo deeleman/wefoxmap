@@ -10,6 +10,7 @@ import { PlatformModule } from '@wefox/platform';
 import { SharedModule } from '@wefox/shared';
 
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([]),
     CoreModule.forRoot(),
     VendorModule.forRoot(),
     PlatformModule.forRoot(),

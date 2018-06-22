@@ -4,51 +4,33 @@ $default-base-color: #333333;
 $palette: (
   // -- Basic Color Palette
   black: (
-    darker:       #001237,
-    dark:         #2E3852,
-    base:         #000E2B,
-    light:        #737B8C,
-    lighter:      #CFD3D8
+    dark:         #000000,
+    base:         #2F2F2F,
+    light:        #454545,
   ),
 
   blue: (
-    darker:       #006EBE,
     dark:         #0287E8,
     base:         #57B8FF,
     light:        #8CCFFF,
-    lighter:      #C4E5FE
-  ),
-
-  green: (
-    darker:       #2B7744,
-    dark:         #33BF62,
-    base:         #54D880,
-    light:        #7FE3A0,
-    lighter:      #DFF7E6
   ),
 
   red: (
-    darker:       #C8102E,
-    dark:         #DB1A3A,
-    base:         #EE1539,
-    light:        #F92448,
-    lighter:      #FF7289
+    dark:         #990000,
+    base:         #EA4545,
+    light:        #EA9999,
   ),
 
-  yellow: (
-    darker:       #AB921D,
-    dark:         #C7AA22,
-    base:         #FFDB2C,
-    light:        #FFE980,
-    lighter:      #FFF4C0
+  orange: (
+    dark:         #F09500,
+    base:         #ff9f00,
+    light:        #FEDBA7,
   ),
 
   grey: (
-    darker:       #9B9B9B,
-    dark:         #C5C5C5,
-    base:         #EEEDED,
-    light:        #E2E2E2,
-    lighter:      #EEEEEE
+    dark:         #909090,
+    base:         #CBCBCB,
+    light:        #F9F9F9,
   ),
 
   // -- Transparency shade tones
