@@ -57,23 +57,6 @@
   }
 }
 
-.wfx-viewport--legacy .wfx-not-mobile, 
-.wfx-viewport--extrasmall .wfx-not-mobile {
-  display: none;
-  visibility: hidden;
-  @include visuallyhidden;
-}
-
-.wfx-viewport--small .wfx-not-tablet {
-  @include visuallyhidden;
-}
-
-.wfx-viewport--base .wfx-not-desktop, 
-.wfx-viewport--large .wfx-not-desktop,
-.wfx-viewport--extralarge .wfx-not-desktop {
-  @include visuallyhidden;
-}
-
 // Helper classnames wrapping SASS mixins
 .wfx-is-resetlist {
   @include resetlist;

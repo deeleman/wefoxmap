@@ -1,0 +1,20 @@
+@import "wfx-toolkit";
+
+:host {
+  @include body-footer-layout;
+  text-align: center;
+}
+
+.error {
+  &__message {
+    @include vertically-centered-container;
+    background: color(orange, light);
+    opacity: .7;
+    flex: 2;
+    padding: 0 2em;
+  }
+
+  &__backlink {
+    @include bottombutton(color(black, light), color(black));
+  }
+}

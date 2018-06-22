@@ -64,6 +64,19 @@
   cursor: pointer;
 }
 
+// Generic styling for sidenav bottom buttons
+@mixin bottombutton($color, $hovercolor) {
+  @include resetbutton;
+
+  display: block;
+  line-height: 50px;
+  color: white;
+  background: $color;
+  &:hover {
+    background: $hovercolor;
+  }
+}
+
 // Disables clicking
 @mixin preventclick {
   cursor: default;
@@ -81,8 +94,6 @@
   @include nopadmargin;
   > li {
     list-style-type: none;
-
-    @include nopadmargin;
   }
 }
 

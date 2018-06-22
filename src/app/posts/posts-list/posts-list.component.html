@@ -1,0 +1,15 @@
+<ul class="items wfx-is-resetlist">
+  <li *ngFor="let post of (posts$ | async)" class="item" [routerLink]="['/view', post.id]">
+    <figure class="item__image">
+      <img class="item__image-bitmap" [attr.src]="post.image_url" [attr.alt]="post.title">
+    </figure>
+    <h3 class="item__name">
+      {{ post.title }}
+    </h3>
+  </li>
+</ul>
+
+<button class="add-link" routerLink="/new">
+  Add New Location
+</button>
+

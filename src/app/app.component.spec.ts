@@ -1,37 +1,45 @@
-import { TestBed, async } from '@angular/core/testing';
-import { Store } from '@ngrx/store';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { StoreModule, Store } from '@ngrx/store';
 
-import { SETTINGS } from '@wefox/settings';
-import { PlatformState, PlatformModule, PostService } from '@wefox/platform';
+import { PlatformState, platformReducer, PlatformModule, PostService } from '@wefox/platform';
+import * as PostActions from '@wefox/platform/post';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let fixture: any;
+  let appComponent: ComponentFixture<AppComponent>;
+  let store: Store<PlatformState>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
-      imports: [PlatformModule],
+      imports: [
+        PlatformModule,
+        RouterTestingModule,
+        StoreModule.forRoot(platformReducer)
+      ],
       providers: [PostService]
     }).compileComponents();
   }));
 
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    appComponent = fixture.debugElement.componentInstance;
+    store = TestBed.get(Store);
+    spyOn(store, 'dispatch').and.callThrough();
 
-  it(`should have as title the text configured at the settings`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual(SETTINGS.appName);
-  }));
-
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain(`Welcome to ${SETTINGS.appName}!`);
+  });
+
+  it('should create the app', async(() => {
+    expect(appComponent).toBeTruthy();
   }));
+
+  it('should dispatch the fetch action to load posts when created', () => {
+    const action = new PostActions.Fetch();
+    expect(store.dispatch).toHaveBeenCalledWith(action);
+  });
 });

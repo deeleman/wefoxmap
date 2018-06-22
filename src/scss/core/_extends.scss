@@ -24,7 +24,7 @@
   @extend %wfx-header;
   font-size: 30px;
   font-weight: header-weight(semibold);
-  padding: 0 0 em(20, 30);
+  padding: 0 0 em(30, 30);
 }
 
 %wfx-header--h3 {
@@ -56,10 +56,11 @@
 %wfx-bodytext {
   @extend %wfx-body;
   font-size: 15px;
-  line-height: em(24, 20);
+  line-height: em(60, 20);
   vertical-align: middle;
   font-weight: weight(regular);
   padding: 0 0 em(20, 20);
+  color: color(grey, dark);
   a {
     color: color(blue);
   }

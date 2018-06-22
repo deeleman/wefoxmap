@@ -19,5 +19,10 @@ export const SETTINGS = {
   // GOOGLE KEYS
   google: {
     mapKey: 'AIzaSyDpmJn73wSpasCRbW2ojDqzBtbyCwM_iCI'
+  },
+
+  // CUSTOM PAGE TITLES
+  titles: {
+    notFound: 'Page not found'
   }
 };

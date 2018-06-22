@@ -34,4 +34,12 @@ describe('App settings', () => {
     expect(SETTINGS.google.mapKey).toBeDefined();
   });
 
+  it('should define a set of custom page titles', () => {
+    expect(SETTINGS.titles).toBeDefined();
+  });
+
+  it('should defien a custom title for the not found page', () => {
+    expect(SETTINGS.titles.notFound).toBeDefined();
+  });
+
 });

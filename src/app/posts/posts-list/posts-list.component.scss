@@ -1,0 +1,46 @@
+@import "wfx-toolkit";
+
+:host {
+  @include body-footer-layout;
+}
+
+.item {
+  display: flex;
+  border-bottom: 1px solid white;
+  margin-left: 5px;
+  cursor: pointer;
+  line-height: 46px;
+  padding: 1em;
+
+  &__image {
+    border: 4px solid color(grey, dark);
+    border-radius: 100px;
+    width: 45px;
+    height: 45px;
+    overflow: hidden;
+    margin-right: 1em;
+
+    &-bitmap {
+      height: 45px;
+      filter: grayscale(100%) brightness(150%);
+    }
+  }
+
+  &:hover {
+    border-left: 5px solid color(orange);
+    margin-left: 0;
+    color: color(orange, dark);
+
+    .item__image { 
+      border-color: color(blue, dark);
+    }
+    
+    .item__image-bitmap {
+      filter: grayscale(0%) brightness(100%);
+    }
+  }
+}
+
+.add-link {
+  @include bottombutton(color(orange), color(orange, dark));
+}

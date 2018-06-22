@@ -13,7 +13,6 @@ html, body {
 body {
   font-size: em($browser-context);
   font-family: $body-font;
-  color: color(black);
   overflow-x: hidden;
 
   -webkit-font-smoothing: antialiased;
