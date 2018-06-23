@@ -1,0 +1,48 @@
+<form novalidate class="postform" [formGroup]="postForm" (submit)="onSubmit()" [class.postform--onloading]="isLoading">
+  <fieldset class="postform__body">
+    <label class="postform__row">
+      <h6>City</h6>
+      <input type="text" formControlName="title">
+    </label>
+
+    <label class="postform__row">
+      <h6>Description</h6>
+      <textarea type="text" formControlName="content" rows="2"></textarea>
+    </label>
+
+    <label class="postform__row">
+      <h6>Image URL</h6>
+      <input type="text" formControlName="image_url">
+    </label>
+
+    <div class="postform__row postform__row--coords" *ngIf="!latitude.value && !longitude.value">
+      <h6>Choose Location Coordinates</h6>
+      <p>
+        <small>Double click on map to select the location for this new post</small>
+      </p>
+    </div>
+
+    <div class="postform__row postform__row--coords" *ngIf="latitude.value && longitude.value">
+      <h6>Update Location Coordinates</h6>
+      <p class="postform__coords">
+        <small>
+          <strong>LATITUDE: {{ latitude.value }}
+            <br> LONGITUDE: {{ longitude.value }}</strong>
+        </small>
+      </p>
+      <p>
+        <small>Double click on map to choose a new location</small>
+      </p>
+    </div>
+
+    <input type="hidden" formControlName="lat" #latitude>
+    <input type="hidden" formControlName="long" #longitude>
+  </fieldset>
+
+  <button class="postform__submit"
+    [class.postform__submit--onloading]="isLoading"
+    [class.postform__submit--invalid]="postForm.invalid">
+    <span class="postform__submit-text">{{ submitLabel }}</span>
+    <span class="postform__submit-text--invalid">Plase, complete form first</span>
+  </button>
+</form>

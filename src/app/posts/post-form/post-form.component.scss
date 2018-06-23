@@ -1,0 +1,80 @@
+@import "wfx-toolkit";
+
+.postform {
+  @include body-footer-layout;
+  padding-top: $gutter / 2;
+
+  &__body {
+    border: none;
+    overflow: auto;
+  }
+  
+  &__row {
+    display: block;
+    margin-top: $gutter / 2;
+    color: color(orange, dark);
+
+    &--coords p {
+      color: color(grey, dark);
+    }
+
+    &--error {
+      color: color(red);
+    }
+  }
+
+  &__coords {
+    margin: 5px 0;
+    padding: 3px 6px;
+    border-radius: 2px;
+    text-align: center;
+    background: color(orange, light);
+    > * {
+      color: color(black, light);
+    }
+  }
+
+  input[type=text],
+  textarea {
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    border-bottom: 1px solid color(grey);
+    padding: 5px 0;
+    margin-bottom: $gutter;
+    color: color(grey, dark);
+    
+    &:focus {
+      color: color(blue);
+      border-bottom-color: color(blue);
+    }
+  }
+
+  textarea {
+    @extend %wfx-bodytext--small;
+    resize: none;
+  }
+
+  &__submit {
+    @include bottombutton(color(orange), color(orange, dark));
+    
+    &-text--invalid {
+      display: none;
+    }
+    
+    &--invalid {
+      @include bottombutton(color(grey), color(red, light));
+
+      &:hover {
+        .postform__submit-text {
+          display: none;
+        }
+        
+        .postform__submit-text--invalid {
+          display: block;
+        }
+      }
+    }
+  }
+}

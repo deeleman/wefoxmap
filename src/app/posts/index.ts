@@ -1,4 +1,5 @@
 export * from './post-add';
+export * from './post-form';
 export * from './post-header';
 export * from './post-view';
 export * from './post-view-detail';

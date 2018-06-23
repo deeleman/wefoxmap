@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@wefox/shared';
 import { NotFoundComponent } from '@wefox/errors';
 import {
+  PostFormComponent,
   PostAddComponent,
   PostHeaderComponent,
   PostsListComponent,
@@ -31,6 +32,7 @@ const routes: Routes = [
 ];
 
 const routedComponents = [
+  PostFormComponent,
   PostAddComponent,
   PostHeaderComponent,
   PostsListComponent,
