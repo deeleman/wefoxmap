@@ -24,5 +24,13 @@ export const SETTINGS = {
   // CUSTOM PAGE TITLES
   titles: {
     notFound: 'Page not found'
+  },
+
+  // MAP DEFAULT CONFIG
+  mapConfig: {
+    lat: 48.82106292677622,
+    long: 10.87646484375,
+    zoom: 5,
+    customIcon: './../../assets/images/wefox-logo-marker.png'
   }
 };

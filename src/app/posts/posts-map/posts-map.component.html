@@ -1,0 +1,15 @@
+<agm-map class="posts-map"
+  [latitude]="defaultMapConfig.lat"
+  [longitude]="defaultMapConfig.long"
+  [zoom]="defaultMapConfig.zoom"
+  (mapDblClick)="onDoubleClick($event)">
+
+  <agm-marker class="posts-map__item"
+    *ngFor="let post of (posts$ | async)"
+    [iconUrl]="defaultMapConfig.customIcon"
+    [latitude]="post.lat"
+    [longitude]="post.long"
+    (markerClick)="onMarkerClick(post)">
+  </agm-marker>
+
+</agm-map>

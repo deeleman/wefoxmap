@@ -9,12 +9,15 @@ import { VendorModule } from '@wefox/vendor';
 import { PlatformModule } from '@wefox/platform';
 import { SharedModule } from '@wefox/shared';
 
+import { PostsMapComponent } from '@wefox/posts';
+
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PostsMapComponent,
   ],
   imports: [
     BrowserModule,

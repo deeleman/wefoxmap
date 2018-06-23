@@ -285,18 +285,3 @@
   font-size: inherit;
   line-height: inherit;
 }
-
-// Generates a rounded avatar icon with a given size, background color and image
-@mixin avatar-icon($size, $iconUrl, $color: $default-base-color, $tone: base, $padding: 5px) {
-  width: $size - $padding;
-  height: $size - $padding;
-  border-radius: 100%;
-  background-color: color($color, $tone);
-  background-image: url($iconUrl);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position-x: center;
-  border-color: color($color, $tone);
-  border-width: $padding;
-  border-style: solid;
-}

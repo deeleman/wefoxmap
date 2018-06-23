@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule, Store } from '@ngrx/store';
@@ -5,6 +6,7 @@ import { StoreModule, Store } from '@ngrx/store';
 import { PlatformState, platformReducer, PlatformModule, PostService } from '@wefox/platform';
 import * as PostActions from '@wefox/platform/post';
 import { AppComponent } from './app.component';
+import { PostsMapComponent } from '@wefox/posts';
 
 describe('AppComponent', () => {
   let fixture: any;
@@ -14,14 +16,16 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        PostsMapComponent
       ],
       imports: [
         PlatformModule,
         RouterTestingModule,
         StoreModule.forRoot(platformReducer)
       ],
-      providers: [PostService]
+      providers: [PostService],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
 

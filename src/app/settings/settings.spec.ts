@@ -38,8 +38,15 @@ describe('App settings', () => {
     expect(SETTINGS.titles).toBeDefined();
   });
 
-  it('should defien a custom title for the not found page', () => {
+  it('should define a custom title for the not found page', () => {
     expect(SETTINGS.titles.notFound).toBeDefined();
+  });
+
+  it('should define a default map settings object', () => {
+    expect(SETTINGS.mapConfig.lat).toBeDefined();
+    expect(SETTINGS.mapConfig.long).toBeDefined();
+    expect(SETTINGS.mapConfig.zoom).toBeDefined();
+    expect(SETTINGS.mapConfig.customIcon).toBeDefined();
   });
 
 });
