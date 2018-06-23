@@ -3,6 +3,7 @@ import { ReplaySubject } from 'rxjs';
 
 export class ActivatedRouteStub {
   private subject = new ReplaySubject<ParamMap>();
+  snapshot = {};
 
   constructor(initialParams?: Params) {
     this.setParamMap(initialParams);

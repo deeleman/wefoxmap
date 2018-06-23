@@ -5,9 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@wefox/shared';
 import { NotFoundComponent } from '@wefox/errors';
 import {
+  PostAddComponent,
+  PostHeaderComponent,
   PostsListComponent,
   PostViewComponent,
-  PostViewDetailComponent
+  PostViewDetailComponent,
+  PostViewEditComponent,
 } from '@wefox/posts';
 
 const routes: Routes = [
@@ -18,15 +21,22 @@ const routes: Routes = [
     children: [{
       path: '',
       component: PostViewDetailComponent
+    }, {
+      path: 'edit',
+      component: PostViewEditComponent
     }]
   },
+  { path: 'new', component: PostAddComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
 const routedComponents = [
+  PostAddComponent,
+  PostHeaderComponent,
   PostsListComponent,
   PostViewComponent,
   PostViewDetailComponent,
+  PostViewEditComponent,
   NotFoundComponent
 ];
 
@@ -34,7 +44,7 @@ const routedComponents = [
   declarations: [...routedComponents],
   imports: [
     SharedModule,
-    RouterModule.forRoot(routes, { enableTracing: !SETTINGS.production })
+    RouterModule.forRoot(routes, { enableTracing: false /*!SETTINGS.production*/ })
   ],
   exports: [RouterModule, ...routedComponents]
 })

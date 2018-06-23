@@ -1,10 +1,8 @@
 <section class="view">
-  <figure class="view__image wfx-animation--fadein" [ngStyle]="{ 'background-image': 'url(' + post?.image_url + ')'}">
-  </figure>
-  <div class="view__header">
-    <h2>{{ post?.title }}</h2>
-  </div>
-  <p class="view__description">{{ post?.content }}</p>
+  <wfx-post-header [post]="post"></wfx-post-header>
+  <p class="view__description">
+    {{ post?.content }}
+  </p>
   <h6 class="view__coords wfx-is-centered">
     LAT: {{ post?.lat }} | LONG: {{ post?.long }}
   </h6>

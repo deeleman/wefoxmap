@@ -1,0 +1,15 @@
+@import "wfx-toolkit";
+
+:host {
+  @include body-footer-layout;
+  height: 100%;
+}
+
+.view {
+  flex: 2;
+  @include body-footer-layout;
+
+  &__form {
+    flex: 2;
+  }
+}

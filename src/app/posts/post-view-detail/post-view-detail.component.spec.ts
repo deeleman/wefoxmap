@@ -5,6 +5,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { StoreModule, Store } from '@ngrx/store';
 
+import { PostHeaderComponent } from '@wefox/posts';
 import { ActivatedRouteStub } from '@wefox/platform/testing';
 import { SETTINGS } from '@wefox/settings';
 import { PlatformState, platformReducer } from '@wefox/platform';
@@ -41,7 +42,7 @@ describe('PostViewDetailComponent', () => {
         RouterTestingModule,
         StoreModule.forRoot(platformReducer)
       ],
-      declarations: [PostViewDetailComponent]
+      declarations: [PostViewDetailComponent, PostHeaderComponent]
     })
       .compileComponents()
       .then(() => {

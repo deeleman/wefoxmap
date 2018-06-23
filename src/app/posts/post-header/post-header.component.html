@@ -1,0 +1,22 @@
+<figure class="header__image" [ngStyle]="{ 'background-image': 'url(' + post?.image_url + ')'}">
+</figure>
+<div class="header__title">
+  <h2>
+    {{ post?.title }}
+  </h2>
+  <a *ngIf="mode == 'default'"
+    class="header__title-edit"
+    [routerLink]="['edit']">
+    EDIT
+  </a>
+  <a *ngIf="mode == 'edit' && post && post.id"
+    class="header__title-edit header__title-edit--cancel"
+    [routerLink]="['/view', post?.id]">
+    CANCEL EDIT
+  </a>
+  <a *ngIf="mode == 'add'"
+    class="header__title-edit header__title-edit--cancel"
+    routerLink="/">
+    CANCEL
+  </a>
+</div>
