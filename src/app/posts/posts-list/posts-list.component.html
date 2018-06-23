@@ -1,4 +1,4 @@
-<ul class="items wfx-is-resetlist">
+<ul class="items wfx-is-resetlist wfx-animation--slide-in-back">
   <li *ngFor="let post of (posts$ | async)" class="item" [routerLink]="['/view', post.id]">
     <figure class="item__image">
       <img class="item__image-bitmap" [attr.src]="post.image_url" [attr.alt]="post.title">

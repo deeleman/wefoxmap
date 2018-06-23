@@ -24,6 +24,10 @@
       img {
         width: $sidenav-width;
       }
+
+      &:hover img {
+        opacity: .8;
+      }
     }
     
     &-posts {

@@ -6,9 +6,9 @@ import { SETTINGS } from '@wefox/settings';
 @Component({
   selector: 'wfx-not-found',
   template: `
-    <section clasS="error__message">
-      <h2>Ups!</h2>
-      <p>
+    <section class="error__message">
+      <h2 class="wfx-animation--fadein">Ups!</h2>
+      <p class="wfx-animation--fadein">
         Apparently the resource you're looking for has been removed or does not exit.</p>
     </section>
     <button class="error__backlink" routerLink="/">
