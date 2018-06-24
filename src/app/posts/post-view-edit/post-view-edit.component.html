@@ -1,5 +1,8 @@
 <section class="view">
-  <wfx-post-header [post]="post" mode="edit">
+  <wfx-post-header mode="edit"
+    [post]="post"
+    [class.post-header--onloading]="(postState$ | async).isLoading"
+    [class.post-header--onerror]="(postState$ | async).hasErrors">
   </wfx-post-header>
   <div class="view__form">
     <wfx-post-form [post]="post" (save)="onSave($event)"></wfx-post-form>

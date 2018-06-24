@@ -1,5 +1,9 @@
 <section class="view">
-  <wfx-post-header [post]="post"></wfx-post-header>
+  <wfx-post-header (delete)="onDelete($event)"
+  [post]="post"
+  [class.post-header--onloading]="(postState$ | async).isLoading"
+  [class.post-header--onerror]="(postState$ | async).hasErrors">
+  </wfx-post-header>
   <p class="view__description">
     {{ post?.content }}
   </p>

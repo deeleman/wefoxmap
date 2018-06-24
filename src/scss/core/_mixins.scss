@@ -284,7 +284,7 @@
 // Prevents flickering (on FF mostly) on lazy loaded items featuring CSS animations
 @mixin prevent-animation-flicker {
   backface-visibility: hidden;
-  perspective: 200px;
+  perspective: 1000px;
 }
 
 // Ensures text styling is properly enforced down the nodes childtree

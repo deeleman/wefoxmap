@@ -1,22 +1,36 @@
-<figure class="header__image" [ngStyle]="{ 'background-image': 'url(' + post?.image_url + ')'}">
-</figure>
+<header class="header" ontouchstart="this.classList.toggle('hover');">
+  <div class="header__flipper-wrapper">
+    <figure class="header__flipper header__image"
+      [ngStyle]="{ 'background-image': 'url(' + post?.image_url + ')'}">
+    </figure>
+
+    <div class="header__flipper header__onloading">
+      <p>Processing... Please wait.</p>
+    </div>
+
+    <div class="header__flipper header__error">
+      <h3 class="header__error-label">We're sorry!</h3>
+      <p>An error occured. <br>Please try again.</p>
+    </div>
+  </div>
+</header>
+
 <div class="header__title">
   <h2>
     {{ post?.title }}
   </h2>
-  <a *ngIf="mode == 'default'"
-    class="header__title-edit"
-    [routerLink]="['edit']">
-    EDIT
-  </a>
-  <a *ngIf="mode == 'edit' && post && post.id"
-    class="header__title-edit header__title-edit--cancel"
-    [routerLink]="['/view', post?.id]">
-    CANCEL EDIT
-  </a>
-  <a *ngIf="mode == 'add'"
-    class="header__title-edit header__title-edit--cancel"
-    routerLink="/">
-    CANCEL
-  </a>
+  <nav class="header__nav">
+    <a *ngIf="mode == 'default'" class="header__nav-edit" [routerLink]="['edit']">
+      EDIT
+    </a>
+    <a *ngIf="mode == 'default'" class="header__nav-edit header__nav-edit--delete" (click)="onDelete(post)" title="Delete post">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6l3 18h12l3-18h-18zm19-4v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.316c0 .901.73 2 1.631 2h5.711z"/></svg>
+    </a>
+    <a *ngIf="mode == 'edit' && post && post.id" class="header__nav-edit header__nav-edit--cancel" [routerLink]="['/view', post?.id]">
+      CANCEL EDIT
+    </a>
+    <a *ngIf="mode == 'add'" class="header__nav-edit header__nav-edit--cancel" routerLink="/">
+      CANCEL
+    </a>
+  </nav>
 </div>

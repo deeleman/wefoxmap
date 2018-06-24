@@ -1,8 +1,10 @@
 <section class="add">
   <wfx-post-header mode="add" [post]="{
-    title: 'New post',
-    image_url: './../../../assets/images/publish-header.png'
-  }">
+      title: 'New post',
+      image_url: './../../../assets/images/publish-header.png'
+    }"
+    [class.post-header--onloading]="(postState$ | async).isLoading"
+    [class.post-header--onerror]="(postState$ | async).hasErrors">
   </wfx-post-header>
   <div class="add__form">
     <wfx-post-form (save)="onSave($event)"></wfx-post-form>
