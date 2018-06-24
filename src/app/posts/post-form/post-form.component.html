@@ -1,22 +1,21 @@
 <form novalidate class="postform" [formGroup]="postForm" (submit)="onSubmit()" [class.postform--onloading]="isLoading">
   <fieldset class="postform__body">
-    <label class="postform__row">
+    <label class="postform__row" [class.postform__row--error]="postFormSubmitted && postForm.get('title').invalid">
       <h6>City</h6>
-      <input type="text" formControlName="title">
+      <input type="text" formControlName="title" placeholder="Enter city name">
     </label>
-
-    <label class="postform__row">
+    <label class="postform__row" [class.postform__row--error]="postFormSubmitted && postForm.get('content').invalid">
       <h6>Description</h6>
-      <textarea type="text" formControlName="content" rows="2"></textarea>
+      <textarea type="text" formControlName="content" rows="2" placeholder="Enter city description"></textarea>
     </label>
 
-    <label class="postform__row">
+    <label class="postform__row" [class.postform__row--error]="postFormSubmitted && postForm.get('image_url').invalid">
       <h6>Image URL</h6>
-      <input type="text" formControlName="image_url">
+      <input type="text" formControlName="image_url" placeholder="Provide full image URL">
     </label>
 
     <div class="postform__row postform__row--coords" *ngIf="!latitude.value && !longitude.value">
-      <h6 class="postform__coords-label">Choose Location Coordinates</h6>
+      <h6 class="postform__coords-label" [class.postform__row--error]="postFormSubmitted && postForm.get('lat').invalid">Choose Location Coordinates</h6>
       <p>
         <small>Double click on map to select the location for this new post</small>
       </p>

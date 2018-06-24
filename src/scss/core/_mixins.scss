@@ -149,6 +149,10 @@
 
 // Allows placeholder style customisation in form inputs
 @mixin placeholder {
+  ::placeholder {
+    @content;
+  }
+
   ::-webkit-input-placeholder {
     @content;
   }
@@ -167,6 +171,10 @@
 }
 
 @mixin placeholderfocus {
+  :focus::placeholder {
+    @content;
+  }
+ 
   :focus::-webkit-input-placeholder {
     @content;
   }
