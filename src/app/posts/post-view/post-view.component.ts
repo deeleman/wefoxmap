@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
     }
   `],
   template: `
-  <section class="post-view wfx-animation--slide-in">
+  <section class="post-view wfx-bg--grey-light wfx-animation--slide-in">
     <router-outlet></router-outlet>
   </section>
   `

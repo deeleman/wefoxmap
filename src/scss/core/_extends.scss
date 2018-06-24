@@ -28,26 +28,26 @@
 }
 
 %wfx-header--h3 {
-  @extend %wfx-sub-header;
+  @extend %wfx-header;
   font-size: 24px;
   font-weight: weight(bold);
   padding: em(20, 24) 0;
 }
 
 %wfx-header--h4 {
-  @extend %wfx-sub-header;
+  @extend %wfx-header;
   font-size: 18px;
   font-weight: weight(bolder);
 }
 
 %wfx-header--h5 {
-  @extend %wfx-sub-header;
+  @extend %wfx-body;
   font-size: 18px;
   font-weight: weight(bold);
 }
 
 %wfx-header--h6 {
-  @extend %wfx-sub-header;
+  @extend %wfx-body;
   font-size: 10px;
   font-weight: weight(regular);
   text-transform: uppercase;
