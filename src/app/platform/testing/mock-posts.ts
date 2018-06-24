@@ -1,3 +1,4 @@
+/*tslint:disable:max-line-length */
 export const mockPosts = [{
     'id': 2,
     'title': 'Barcelona',
