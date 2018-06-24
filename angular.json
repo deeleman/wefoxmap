@@ -133,5 +133,10 @@
       }
     }
   },
-  "defaultProject": "wefox"
+  "defaultProject": "wefox",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
