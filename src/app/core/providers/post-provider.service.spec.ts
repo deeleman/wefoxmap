@@ -28,7 +28,7 @@ describe('PostProviderService', () => {
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
           postProviderService.list().subscribe();
           backend.expectOne({
-            url: `${SETTINGS.api.host}/${SETTINGS.api.postsEndpoint}`,
+            url: `${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}`,
             method: 'GET'
           });
         })
@@ -42,7 +42,7 @@ describe('PostProviderService', () => {
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
           postProviderService.show(mockPost).subscribe();
           backend.expectOne({
-            url: `${SETTINGS.api.host}/${SETTINGS.api.postsEndpoint}/${mockPost.id}`,
+            url: `${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}/${mockPost.id}`,
             method: 'GET'
           });
         })
@@ -56,7 +56,7 @@ describe('PostProviderService', () => {
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
           postProviderService.create(mockPost).subscribe();
           backend.expectOne({
-            url: `${SETTINGS.api.host}/${SETTINGS.api.postsEndpoint}`,
+            url: `${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}`,
             method: 'POST'
           });
         })
@@ -70,7 +70,7 @@ describe('PostProviderService', () => {
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
           postProviderService.update(mockPost).subscribe();
           backend.expectOne({
-            url: `${SETTINGS.api.host}/${SETTINGS.api.postsEndpoint}/${mockPost.id}`,
+            url: `${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}/${mockPost.id}`,
             method: 'PUT'
           });
         })
@@ -84,7 +84,7 @@ describe('PostProviderService', () => {
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
           postProviderService.remove(mockPost).subscribe();
           backend.expectOne({
-            url: `${SETTINGS.api.host}/${SETTINGS.api.postsEndpoint}/${mockPost.id}`,
+            url: `${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}/${mockPost.id}`,
             method: 'DELETE'
           });
         })

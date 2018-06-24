@@ -43,7 +43,7 @@ export class PostProviderService extends PostService {
   }
 
   private getRestEndpoint(post?: Partial<Post>): string {
-    let apiEndpoint = `${SETTINGS.api.host}/${SETTINGS.api.postsEndpoint}`;
+    let apiEndpoint = `${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}`;
 
     if (post && post.id) {
       apiEndpoint += `/${post.id}`;
