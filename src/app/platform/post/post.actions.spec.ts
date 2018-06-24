@@ -1,17 +1,7 @@
+import { mockPost } from '@wefox/platform/testing';
 import * as PostActions from './post.actions';
 
 describe('PostActions', () => {
-  const mockPost = {
-    id: 2,
-    title: 'Barcelona',
-    content: 'Barcelona is blah blah blah',
-    created_at: '2018-06-13T20:24:44.145Z',
-    updated_at: '2018-06-13T20:24:44.145Z',
-    lat: 41.3851,
-    long: 2.1734,
-    image_url: 'https://fakeurl'
-  };
-
   describe('FetchActions', () => {
     it('should create a fetch action', () => {
       const action = new PostActions.Fetch();

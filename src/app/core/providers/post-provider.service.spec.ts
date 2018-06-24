@@ -2,6 +2,7 @@ import { TestBed, inject, async } from '@angular/core/testing';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
+import { mockPost } from '@wefox/platform/testing';
 import { SETTINGS } from '@wefox/settings';
 import { PostProviderService } from './post-provider.service';
 
@@ -39,7 +40,6 @@ describe('PostProviderService', () => {
       inject([
         PostProviderService, HttpTestingController],
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
-          const mockPost = { id: 2 };
           postProviderService.show(mockPost).subscribe();
           backend.expectOne({
             url: `${SETTINGS.api.host}/${SETTINGS.api.postsEndpoint}/${mockPost.id}`,
@@ -54,7 +54,6 @@ describe('PostProviderService', () => {
       inject([
         PostProviderService, HttpTestingController],
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
-          const mockPost = { id: 2 };
           postProviderService.create(mockPost).subscribe();
           backend.expectOne({
             url: `${SETTINGS.api.host}/${SETTINGS.api.postsEndpoint}`,
@@ -69,7 +68,6 @@ describe('PostProviderService', () => {
       inject([
         PostProviderService, HttpTestingController],
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
-          const mockPost = { id: 2 };
           postProviderService.update(mockPost).subscribe();
           backend.expectOne({
             url: `${SETTINGS.api.host}/${SETTINGS.api.postsEndpoint}/${mockPost.id}`,
@@ -84,7 +82,6 @@ describe('PostProviderService', () => {
       inject([
         PostProviderService, HttpTestingController],
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
-          const mockPost = { id: 2 };
           postProviderService.remove(mockPost).subscribe();
           backend.expectOne({
             url: `${SETTINGS.api.host}/${SETTINGS.api.postsEndpoint}/${mockPost.id}`,

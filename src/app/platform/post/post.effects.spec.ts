@@ -2,23 +2,13 @@ import { Actions } from '@ngrx/effects';
 import { Observable, throwError, of } from 'rxjs';
 import { cold } from 'jasmine-marbles';
 
+import { mockPost } from '@wefox/platform/testing';
 import { Post, Posts } from './post.models';
 import { PostEffects } from './post.effects';
 import { postReducer, initialState } from './post.reducer';
 import * as PostActions from './post.actions';
 
 describe('PostEffects', () => {
-  const mockPost = {
-    id: 2,
-    title: 'Barcelona',
-    content: 'Barcelona is blah blah blah',
-    created_at: '2018-06-13T20:24:44.145Z',
-    updated_at: '2018-06-13T20:24:44.145Z',
-    lat: 41.3851,
-    long: 2.1734,
-    image_url: 'https://fakeurl'
-  };
-
   function postServiceStub(methodName: string, response: any) {
     const service = jasmine.createSpyObj('postService', [methodName]);
 

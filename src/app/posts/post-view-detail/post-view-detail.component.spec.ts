@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { StoreModule, Store } from '@ngrx/store';
 
 import { PostHeaderComponent } from '@wefox/posts';
-import { ActivatedRouteStub } from '@wefox/platform/testing';
+import { ActivatedRouteStub, mockPost } from '@wefox/platform/testing';
 import { SETTINGS } from '@wefox/settings';
 import { PlatformState, platformReducer } from '@wefox/platform';
 import * as PostActions from '@wefox/platform/post';
@@ -18,22 +18,11 @@ describe('PostViewDetailComponent', () => {
   let store: Store<PlatformState>;
   let titleService: Title;
 
-  const mockPost = {
-    id: 256,
-    title: 'Barcelona',
-    content: 'Barcelona is a city',
-    created_at: '2018-06-13T20:24:44.145Z',
-    updated_at: '2018-06-13T20:24:44.145Z',
-    lat: 41.3851,
-    long: 2.1734,
-    image_url: 'https://fakeurl/img.png'
-  };
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [{
         provide: ActivatedRoute,
-        useValue: new ActivatedRouteStub({ id: mockPost.id })
+        useValue: new ActivatedRouteStub({ initialParams: { id: mockPost.id }})
       }, {
         provide: Title,
         useClass: Title

@@ -5,6 +5,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { SETTINGS } from '@wefox/settings';
 import { PlatformState, platformReducer } from '@wefox/platform';
+import { mockPosts } from '@wefox/platform/testing';
 import * as PostActions from '@wefox/platform/post';
 import { PostsListComponent } from './posts-list.component';
 
@@ -13,17 +14,6 @@ describe('PostsListComponent', () => {
   let fixture: ComponentFixture<PostsListComponent>;
   let store: Store<PlatformState>;
   let titleService: Title;
-
-  const mockPosts = [{
-    id: 2,
-    title: 'Barcelona',
-    content: 'Barcelona is blah blah blah',
-    created_at: '2018-06-13T20:24:44.145Z',
-    updated_at: '2018-06-13T20:24:44.145Z',
-    lat: 41.3851,
-    long: 2.1734,
-    image_url: 'https://fakeurl'
-  }];
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

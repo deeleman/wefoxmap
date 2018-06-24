@@ -1,19 +1,10 @@
+import { mockPost } from '@wefox/platform/testing';
+
 import { Post, Posts } from './post.models';
 import { postReducer, initialState } from './post.reducer';
 import * as PostActions from './post.actions';
 
 describe('PostReducer', () => {
-  const mockPost = {
-    id: 2,
-    title: 'Barcelona',
-    content: 'Barcelona is blah blah blah',
-    created_at: '2018-06-13T20:24:44.145Z',
-    updated_at: '2018-06-13T20:24:44.145Z',
-    lat: 41.3851,
-    long: 2.1734,
-    image_url: 'https://fakeurl'
-  };
-
   describe('undefined actions', () => {
     it('should return the default state', () => {
       const action = {};
