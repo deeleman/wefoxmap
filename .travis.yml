@@ -2,3 +2,24 @@ language: node_js
 node_js:
   - "iojs"
   - "7"
+
+language: node_js
+node_js:
+  - "8"
+dist: trusty
+sudo: false
+
+before_script:
+  - npm install -g --silent @angular/cli
+
+cache:
+  directories:
+    - node_modules
+
+addons:
+  chrome: stable
+
+script:
+  - npm run lint
+  - npm run test:headless
+  - npm run build --prod
