@@ -1,10 +1,12 @@
 import { TestBed, inject, async } from '@angular/core/testing';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HttpParams } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { mockPost } from '@wefox/platform/testing';
+import { mockPost, mockPosts } from '@wefox/platform/testing';
 import { SETTINGS } from '@wefox/settings';
 import { PostProviderService } from './post-provider.service';
+import { HttpRequest } from 'selenium-webdriver/http';
+import { Posts } from '@wefox/platform';
 
 describe('PostProviderService', () => {
   beforeEach(() => {
@@ -26,11 +28,13 @@ describe('PostProviderService', () => {
       inject([
         PostProviderService, HttpTestingController],
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
-          postProviderService.list().subscribe();
+          postProviderService.list().subscribe(response => {
+            expect(response).toEqual(mockPosts);
+          });
           backend.expectOne({
             url: `${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}`,
             method: 'GET'
-          });
+          }).flush(mockPosts);
         })
     )
   );
@@ -40,11 +44,13 @@ describe('PostProviderService', () => {
       inject([
         PostProviderService, HttpTestingController],
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
-          postProviderService.show(mockPost).subscribe();
+          postProviderService.show(mockPost).subscribe(response => {
+            expect(response).toEqual(mockPost);
+          });
           backend.expectOne({
             url: `${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}/${mockPost.id}`,
             method: 'GET'
-          });
+          }).flush(mockPost);
         })
     )
   );
@@ -55,10 +61,15 @@ describe('PostProviderService', () => {
         PostProviderService, HttpTestingController],
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
           postProviderService.create(mockPost).subscribe();
-          backend.expectOne({
-            url: `${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}`,
-            method: 'POST'
+          const httpCall = backend.expectOne(request => {
+            return request.url.match(`${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}`) &&
+              request.method === 'POST';
           });
+
+          expect(httpCall.request.body).toEqual({ post: mockPost });
+          expect(httpCall.request.url).toEqual(`${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}`);
+
+          backend.verify();
         })
     )
   );
@@ -69,10 +80,16 @@ describe('PostProviderService', () => {
         PostProviderService, HttpTestingController],
         (postProviderService: PostProviderService, backend: HttpTestingController) => {
           postProviderService.update(mockPost).subscribe();
-          backend.expectOne({
-            url: `${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}/${mockPost.id}`,
-            method: 'PUT'
+
+          const httpCall = backend.expectOne(request => {
+            return request.url.match(`${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}/${mockPost.id}`) &&
+              request.method === 'PUT';
           });
+
+          expect(httpCall.request.body).toEqual({ post: mockPost });
+          expect(httpCall.request.url).toEqual(`${SETTINGS.api.host}${SETTINGS.api.postsEndpoint}/${mockPost.id}`);
+
+          backend.verify();
         })
     )
   );

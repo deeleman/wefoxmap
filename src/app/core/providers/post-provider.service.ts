@@ -26,12 +26,12 @@ export class PostProviderService extends PostService {
 
   create(post: Partial<Post>): Observable<any> {
     const url = this.getRestEndpoint();
-    return this.httpClient.post<Post>(url, post);
+    return this.httpClient.post<Post>(url, { post });
   }
 
   update(post: Partial<Post>): Observable<any> {
     const url = this.getRestEndpoint(post);
-    return this.httpClient.put<Post>(url, post);
+    return this.httpClient.put<Post>(url, { post });
 
   }
 
