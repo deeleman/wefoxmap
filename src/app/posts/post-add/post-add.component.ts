@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { delay, first } from 'rxjs/operators';
 
+import { SETTINGS } from '@wefox/settings';
 import { Post, PlatformState, PostState, selectPostsState } from '@wefox/platform';
 import * as postActions from '@wefox/platform/post';
 
@@ -17,9 +19,10 @@ export class PostAddComponent implements OnInit, OnDestroy {
 
   private dispatchSubscription: Subscription;
 
-  constructor(private store: Store<PlatformState>, private router: Router) { }
+  constructor(private store: Store<PlatformState>, private router: Router, private title: Title) { }
 
   ngOnInit() {
+    this.title.setTitle(`New post | ${SETTINGS.appName}`);
     this.postState$ = this.store.select(selectPostsState);
   }
 
