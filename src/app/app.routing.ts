@@ -46,7 +46,7 @@ const routedComponents = [
   declarations: [...routedComponents],
   imports: [
     SharedModule,
-    RouterModule.forRoot(routes, { enableTracing: false /*!SETTINGS.production*/ })
+    RouterModule.forRoot(routes, { enableTracing: false })
   ],
   exports: [RouterModule, ...routedComponents]
 })

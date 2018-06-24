@@ -1,48 +1,3 @@
-// Grid gallery generator mixins
-@mixin grid($columns: 2, $gutterPercentage: 1.8%) {
-  @if $columns > 1 {
-    @include _generate-grid($columns, $gutterPercentage);
-  } @else {
-    @include _generate-column-grid($gutter);
-  }
-}
-
-@mixin _generate-grid($columns, $gutterPercentage) {
-  // @TODO Replace current implementation by flexbox-driven one once Firefox
-  //       provides support for percentage-based bottom margins
-  display: block;
-  overflow: auto;
-
-  > * {
-    display: block;
-    float: left;
-
-    overflow: visible;
-    line-height: 0;
-    width: ((100% - (($columns - 1) * $gutterPercentage)) / $columns);
-  }
-
-  > *:nth-child(n) {
-    margin-right: $gutterPercentage;
-    margin-bottom: $gutterPercentage;
-  }
-
-  > *:nth-child(#{$columns}n) {
-    margin-right: 0;
-    margin-bottom: 0;
-  }
-}
-
-@mixin _generate-column-grid($gutter) {
-  display: block;
-
-  > * {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: $gutter!important;
-  }
-}
-
 // Removes the element without affecting its display properties
 @mixin visuallyhidden {
   position: absolute;
@@ -95,24 +50,6 @@
   > li {
     list-style-type: none;
   }
-}
-
-// Makes a DOM element spread across the entire viewport
-@mixin fullscreen {
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  border-radius: 0;
-
-  transform: translate(0, 0);
-}
-
-// Centers blocks of body content in the main placeholder
-@mixin main-content {
-  max-width: $max-width;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 // Truncates text with ellipsis at the given width (lorem ipsum -> lorem ip...)
@@ -201,36 +138,6 @@
   align-content: center;
 }
 
-// Radial coloured background gradient generator
-@mixin gradient($dark-color, $light-color, $verticalOffset:top, $horizontalOffset:center) {
-  background: $light-color;
-  background: -moz-radial-gradient(top, ellipse cover, $light-color 0%, $light-color 31%, $dark-color 100%);
-  background: -webkit-gradient(radial, $verticalOffset $horizontalOffset, 0px, $horizontalOffset $horizontalOffset, 100%, color-stop(0%, $light-color), color-stop(31%, $light-color), color-stop(100%, $dark-color));
-  background: -webkit-radial-gradient($verticalOffset $horizontalOffset, ellipse cover, $light-color 0%, $light-color 31%, $dark-color 100%);
-  background: -o-radial-gradient($verticalOffset $horizontalOffset, ellipse cover, $light-color 0%, $light-color 31%, $dark-color 100%);
-  background: -ms-radial-gradient($verticalOffset $horizontalOffset, ellipse cover, $light-color 0%, $light-color 31%, $dark-color 100%);
-  background: radial-gradient(ellipse at $verticalOffset $horizontalOffset, $light-color 0%, $light-color 31%, $dark-color 100%);
-}
-
-// Vendor prefixed keyframes
-@mixin keyframes($animation-name) {
-  @-webkit-keyframes #{$animation-name} {
-      @content;
-  }
-  @-moz-keyframes #{$animation-name} {
-      @content;
-  }
-  @-ms-keyframes #{$animation-name} {
-      @content;
-  }
-  @-o-keyframes #{$animation-name} {
-      @content;
-  }
-  @keyframes #{$animation-name} {
-      @content;
-  }
-}
-
 // A mixin to turn a container into a perfect header/body/footer wrapper
 @mixin body-footer-layout {
   display: flex;
@@ -238,41 +145,6 @@
   justify-content: space-between;
   align-content: stretch;
   height: 100%;
-}
-
-// Styles a DOM element to feature a centered background image covering it up
-@mixin full-container-background($imagepath) {
-  background-image: url($imagepath);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-}
-
-// A direct and convenient way to style <button> elements
-@mixin color-button($normal, $hover, $active, $focus, $text: #FFFFFF) {
-  background: $normal;
-  border-color: $normal;
-  color: $text;
-
-  @media (pointer: fine) {
-    &:not(&--is-disabled):hover {
-      background: $hover;
-      border-color: $hover;
-      color: $text;
-    }
-  }
-
-  &:not(&--is-disabled):active {
-    background: $active;
-    border-color: $active;
-    color: $text;
-  }
-
-  &:not(&--is-disabled):focus {
-    color: $focus;
-    border-color: $focus;
-    color: $text;
-  }
 }
 
 // Trigger 3D hardware acceleration in order to improve UI peformance
@@ -285,11 +157,4 @@
 @mixin prevent-animation-flicker {
   backface-visibility: hidden;
   perspective: 1000px;
-}
-
-// Ensures text styling is properly enforced down the nodes childtree
-@mixin text-inherit {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
 }

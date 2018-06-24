@@ -5,7 +5,6 @@ import { AgmCoreModule } from '@agm/core';
 
 import { SETTINGS } from '@wefox/settings';
 import { CoreModule } from '@wefox/core';
-import { VendorModule } from '@wefox/vendor';
 import { PlatformModule } from '@wefox/platform';
 import { SharedModule } from '@wefox/shared';
 
@@ -23,7 +22,6 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     CoreModule.forRoot(),
-    VendorModule.forRoot(),
     PlatformModule.forRoot(),
     SharedModule,
     AgmCoreModule.forRoot({ apiKey: SETTINGS.google.mapKey }),
@@ -39,6 +37,6 @@ export class AppModule { }
 
 export function onAppInit(injector: Injector) {
   return () => {
-    // early initialization actions
+    // early initialization actions - leave it here for future use
   };
 }

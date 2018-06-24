@@ -14,13 +14,6 @@
   }
 }
 
-.wfx-is-fullscreen {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-}
-
 .wfx-is-centered {
   text-align: center;
 }
@@ -39,31 +32,9 @@
   @include vertically-centered-container;
 }
 
-// Look and feel modifier to be used to center content in the main placeholder
-.wfx-main-content {
-  @include main-content;
-}
-
-// General-purpose helpers
-.wfx-clearfix {
-  *zoom: 1;
-  &:before, &:after {
-    display: table;
-
-    content: " ";
-  }
-  &:after {
-    clear: both;
-  }
-}
-
 // Helper classnames wrapping SASS mixins
 .wfx-is-resetlist {
   @include resetlist;
-}
-
-.wfx-is-fullscreen {
-  @include fullscreen;
 }
 
 .wfx-is-nopadmargin {
@@ -156,22 +127,6 @@
     animation: slideInBack 0.5s 1 forwards;
   }
 
-  &--slide-in-down {
-    animation: slideInDown 0.5s 1 forwards;
-  }
-
-  &--slide-out-right {
-    animation: slideOutRight 1.2s 1 forwards;
-  }
-
-  &--rotate {
-    animation: rotate .5s;
-  }
-
-  &--spinner {
-    animation: rotate 0.4s infinite linear;
-  }
-
   &--zoomin {
     animation: zoomIn .4s;
   }
@@ -186,18 +141,5 @@
 
   &--fadeOut {
     animation: fadeOut .6s;
-  }
-
-  &--flip-in-y {
-    animation: flipInY 1.2s linear;
-    backface-visibility: visible !important;
-  }
-
-  &--ripple {
-    animation: ripple .8s ease-out;
-  }
-
-  &--bounce-in {
-    animation: bounceIn 1s 0s;
   }
 }

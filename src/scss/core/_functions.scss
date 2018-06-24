@@ -24,7 +24,3 @@
 @function em($pixels, $context: $browser-context) {
   @return #{$pixels/$context}em;
 }
-
-@function screen($preset: 'base') {
-  @return map-get($screens, $preset);
-}
