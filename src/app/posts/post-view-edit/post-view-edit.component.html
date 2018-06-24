@@ -2,6 +2,6 @@
   <wfx-post-header [post]="post" mode="edit">
   </wfx-post-header>
   <div class="view__form">
-    <wfx-post-form [post]="post"></wfx-post-form>
+    <wfx-post-form [post]="post" (save)="onSave($event)"></wfx-post-form>
   </div>
 </section>

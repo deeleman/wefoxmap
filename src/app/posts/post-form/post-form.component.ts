@@ -22,6 +22,7 @@ export class PostFormComponent implements OnInit, OnDestroy {
   @Output() save = new EventEmitter<Partial<Post>>();
 
   postForm: FormGroup;
+  postFormSubmitted: boolean;
   queryParamsSubscription: Subscription;
 
   private _post: Post;
@@ -54,6 +55,7 @@ export class PostFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
+    this.postFormSubmitted = true;
     if (this.postForm.valid) {
       this.save.next({ ...this._post, ...this.postForm.value });
     }
