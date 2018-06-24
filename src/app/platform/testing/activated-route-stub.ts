@@ -2,16 +2,30 @@ import { convertToParamMap, ParamMap, Params } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 
 export class ActivatedRouteStub {
-  private subject = new ReplaySubject<ParamMap>();
   snapshot = {};
 
-  constructor(initialParams?: Params) {
-    this.setParamMap(initialParams);
+  private paramMapSubject = new ReplaySubject<ParamMap>();
+  private queryParamMapSubject = new ReplaySubject<ParamMap>();
+
+  constructor({ initialParams, initialQueryParams }: { initialParams?: Params; initialQueryParams?: Params; }) {
+    if (initialParams) {
+      this.setParamMap(initialParams);
+    }
+
+    if (initialQueryParams) {
+      this.setQueryParamMap(initialQueryParams);
+    }
   }
 
-  readonly paramMap = this.subject.asObservable();
+  readonly paramMap = this.paramMapSubject.asObservable();
+
+  readonly queryParamMap = this.queryParamMapSubject.asObservable();
 
   setParamMap(params?: Params) {
-    this.subject.next(convertToParamMap(params));
+    this.paramMapSubject.next(convertToParamMap(params));
+  }
+
+  setQueryParamMap(params?: Params) {
+    this.queryParamMapSubject.next(convertToParamMap(params));
   }
 }

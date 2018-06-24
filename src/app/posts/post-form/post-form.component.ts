@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angu
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 import { Post } from '@wefox/platform';
 
@@ -23,14 +24,13 @@ export class PostFormComponent implements OnInit, OnDestroy {
   postForm: FormGroup;
   queryParamsSubscription: Subscription;
 
-  private isUpdate: boolean;
   private _post: Post;
 
   get submitLabel(): string {
-    return this.isUpdate ? 'Update Post' : 'Save New Post';
+    return this._post && this._post.id ? 'Update Post' : 'Save New Post';
   }
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute) { 
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute) {
     this.postForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       content: ['', [Validators.required]],
@@ -43,6 +43,7 @@ export class PostFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.queryParamsSubscription = this.route
       .queryParamMap
+      .pipe(delay(0)) // Prevents ExpressionChangedAfterItHasBeenCheckedError in Dev mode
       .subscribe(params => this.setCoordsByQueryParams(params));
   }
 
@@ -59,13 +60,19 @@ export class PostFormComponent implements OnInit, OnDestroy {
   }
 
   private updatePostForm(post: Post): void {
-    this.isUpdate = true;
     const { title, content, image_url, lat, long } = post;
     this.postForm.setValue({ title, content, image_url, lat, long });
   }
 
   private setCoordsByQueryParams(params: ParamMap): void {
-    this.postForm.controls['lat'].setValue(params.get('lat'));
-    this.postForm.controls['long'].setValue(params.get('lng'));
+    const lat = params.get('lat');
+    if (lat) {
+      this.postForm.controls['lat'].setValue(lat);
+    }
+
+    const long = params.get('lng');
+    if (long) {
+      this.postForm.controls['long'].setValue(long);
+    }
   }
 }

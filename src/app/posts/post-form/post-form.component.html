@@ -16,18 +16,23 @@
     </label>
 
     <div class="postform__row postform__row--coords" *ngIf="!latitude.value && !longitude.value">
-      <h6>Choose Location Coordinates</h6>
+      <h6 class="postform__coords-label">Choose Location Coordinates</h6>
       <p>
         <small>Double click on map to select the location for this new post</small>
       </p>
     </div>
 
     <div class="postform__row postform__row--coords" *ngIf="latitude.value && longitude.value">
-      <h6>Update Location Coordinates</h6>
+      <h6 class="postform__coords-label">Update Location Coordinates</h6>
       <p class="postform__coords">
         <small>
-          <strong>LATITUDE: {{ latitude.value }}
-            <br> LONGITUDE: {{ longitude.value }}</strong>
+          <strong>
+            LATITUDE: 
+            <span class="postform__coords--lat">{{ latitude.value }}</span>
+            <br> 
+            LONGITUDE: 
+            <span class="postform__coords--lng">{{ longitude.value }}</span>
+          </strong>
         </small>
       </p>
       <p>

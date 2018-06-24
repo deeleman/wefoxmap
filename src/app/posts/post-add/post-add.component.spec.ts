@@ -1,6 +1,7 @@
 import { RouterTestingModule } from '@angular/router/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { SharedModule } from '@wefox/shared';
 import { PostHeaderComponent, PostFormComponent } from '@wefox/posts';
 import { PostAddComponent } from './post-add.component';
 
@@ -10,7 +11,7 @@ describe('PostAddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, SharedModule],
       declarations: [PostFormComponent, PostAddComponent, PostHeaderComponent]
     })
     .compileComponents();
