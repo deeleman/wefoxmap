@@ -1,5 +1,10 @@
 @import "wfx-toolkit";
 
+:host(.post-form--onloading) {
+  @include preventclick;
+  opacity: .5;
+}
+
 .postform {
   @include body-footer-layout;
   padding-top: $gutter / 2;

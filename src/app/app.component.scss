@@ -1,6 +1,8 @@
 @import "wfx-toolkit";
 
 .app {
+  @include enable-3D-acceleration;
+
   display: flex;
   justify-content: flex-start;
   align-items: stretch;

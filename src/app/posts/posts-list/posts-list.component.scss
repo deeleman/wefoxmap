@@ -7,27 +7,33 @@
 .item {
   display: flex;
   border-bottom: 1px solid white;
-  margin-left: 5px;
-  cursor: pointer;
-  line-height: 46px;
+  border-left: 5px solid;
+  border-left-color: color(grey, light);
+  margin-left: 0;
   padding: 1em;
+  line-height: 46px;
+  transition: color .3s, border-color .4s;
+  cursor: pointer;
 
   &__image {
-    border: 4px solid color(grey, dark);
+    border: 4px solid;
+    border-color: color(grey, dark);
     border-radius: 100px;
     width: 45px;
     height: 45px;
     overflow: hidden;
     margin-right: 1em;
-
+    transition: border-color .5s;
+    
     &-bitmap {
       height: 45px;
       filter: grayscale(100%) brightness(150%);
+      transition: filter .5s;
     }
   }
 
   &:hover {
-    border-left: 5px solid color(orange);
+    border-left-color: color(orange);
     margin-left: 0;
     color: color(orange, dark);
 

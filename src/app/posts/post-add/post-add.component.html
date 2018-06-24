@@ -7,6 +7,6 @@
     [class.post-header--onerror]="(postState$ | async).hasErrors">
   </wfx-post-header>
   <div class="add__form">
-    <wfx-post-form (save)="onSave($event)"></wfx-post-form>
+    <wfx-post-form (save)="onSave($event)" [class.post-form--onloading]="(postState$ | async).isLoading"></wfx-post-form>
   </div>
 </section>
