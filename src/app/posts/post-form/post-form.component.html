@@ -27,10 +27,10 @@
         <small>
           <strong>
             LATITUDE: 
-            <span class="postform__coords--lat">{{ latitude.value }}</span>
+            <span class="postform__coords--lat">{{ latitude.value | number:'1.4-7' }}</span>
             <br> 
             LONGITUDE: 
-            <span class="postform__coords--lng">{{ longitude.value }}</span>
+            <span class="postform__coords--lng">{{ longitude.value | number:'1.4-7' }}</span>
           </strong>
         </small>
       </p>

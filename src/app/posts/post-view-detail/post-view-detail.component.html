@@ -8,7 +8,7 @@
     {{ post?.content }}
   </p>
   <h6 class="view__coords wfx-is-centered">
-    LAT: {{ post?.lat }} | LONG: {{ post?.long }}
+    LAT: {{ post?.lat | number:'1.4-7' }} | LONG: {{ post?.long | number:'1.4-7' }}
   </h6>
   <p class="view__lastupdated wfx-is-centered">
     <small>
