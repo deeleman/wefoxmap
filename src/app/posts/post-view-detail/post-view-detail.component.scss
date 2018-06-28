@@ -16,6 +16,11 @@
 
   &__description {
     flex: 2;
+    overflow-y: auto;
+  }
+
+  &__coords {
+    padding-top: 1em;
   }
 
   &__backlink {
