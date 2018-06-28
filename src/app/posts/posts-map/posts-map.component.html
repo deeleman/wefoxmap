@@ -11,5 +11,12 @@
     [longitude]="post.long"
     (markerClick)="onMarkerClick(post)">
   </agm-marker>
+  
+  <agm-marker class="posts-map__item--new"
+    *ngIf="newMarker?.lat && newMarker?.long"
+    [iconUrl]="defaultMapConfig.customAddIcon"
+    [latitude]="newMarker?.lat"
+    [longitude]="newMarker?.long">
+  </agm-marker>
 
 </agm-map>

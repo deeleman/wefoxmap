@@ -47,6 +47,7 @@ describe('App settings', () => {
     expect(SETTINGS.mapConfig.long).toBeDefined();
     expect(SETTINGS.mapConfig.zoom).toBeDefined();
     expect(SETTINGS.mapConfig.customIcon).toBeDefined();
+    expect(SETTINGS.mapConfig.customAddIcon).toBeDefined();
   });
 
 });

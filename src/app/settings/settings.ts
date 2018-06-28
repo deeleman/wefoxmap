@@ -31,6 +31,7 @@ export const SETTINGS = {
     lat: 48.82106292677622,
     long: 10.87646484375,
     zoom: 5,
-    customIcon: './../../assets/images/wefox-logo-marker.png'
+    customIcon: './../../assets/images/wefox-logo-marker.png',
+    customAddIcon: './../../assets/images/wefox-logo-marker-add.png',
   }
 };

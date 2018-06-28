@@ -1,11 +1,13 @@
-export interface Post {
+export interface Marker {
+  lat: number;
+  long: number;
+}
+export interface Post extends Marker {
   id: number;
   title: string;
   content: string;
   created_at: string;
   updated_at: string;
-  lat: number;
-  long: number;
   image_url: string;
 }
 
